@@ -1,0 +1,104 @@
+/* 🔹 PADDING INSTELLINGEN */
+.main--padding-both {
+    padding-top: 100px !important;
+    padding-bottom: 100px !important;
+}
+
+.main--padding-top {
+    padding-top: 100px !important;
+    padding-bottom: 0 !important;
+}
+
+.main--padding-bottom {
+    padding-top: 0 !important;
+    padding-bottom: 100px !important;
+}
+
+.main--padding-none {
+    padding: 0 !important;
+}
+
+@media (max-width: 1024px) {
+    .main--padding-both {
+        padding-top: 40px !important;
+        padding-bottom: 40px !important;
+    }
+
+    .main--padding-top {
+        padding-top:40px !important;
+        padding-bottom: 0 !important;
+    }
+
+    .main--padding-bottom {
+        padding-top: 0 !important;
+        padding-bottom: 40px !important;
+    }
+}
+
+
+/* 🔹 ACHTERGRONDKLEUREN EN TEKSTKLEUREN */
+.main--bg-white {
+    background-color: #ffffff !important;
+    color: #111 !important;
+}
+
+.main--bg-dark {
+    background-color: #222 !important;
+    color: #ffffff !important;
+}
+
+/* H2, H3 en p wit maken in donkere secties */
+.main--bg-dark h1,
+.main--bg-dark h2,
+.main--bg-dark h3,
+.main--bg-dark h4,
+.main--bg-dark h5,
+.main--bg-dark h6,
+.main--bg-dark p,
+.main--bg-dark li {
+    color: #ffffff !important;
+}
+
+
+/* Hover effect */
+.btn:hover {
+    background: #c8a97e; /* Lichte kleur bij hover */
+    color: white;
+}
+
+/* 🔹 Knoppen op donkere achtergrond */
+.main--bg-dark .btn {
+    background: white;
+    color: black;
+}
+
+.main--bg-dark .btn:hover {
+    background: #c8a97e;
+    color: white;
+}
+
+/* 🔹 LINK KLEUREN */
+a {
+    color: #000000; /* Standaard link kleur */
+    text-decoration: none;
+    transition: 0.3s ease-in-out;
+    font-weight: 600;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Links in donkere secties */
+.main--bg-dark a {
+    color: #c8a97e;
+}
+/* 🔹 PARAGRAAF STYLING (RUIMTE TUSSEN P) */
+p {
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.main--bg-dark p {
+    color: #ffffff !important;
+}

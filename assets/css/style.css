@@ -1,0 +1,1460 @@
+@import url('https://fonts.googleapis.com/css2?family=Liter:wght@100..900&family=Manrope:wght@400..700&family=Poppins:wght@300;400;600&family=Playfair+Display:wght@400;700&display=swap');
+
+/* 🔹 Algemene resets */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.custom-logo {
+  max-height: 20px; /* Pas aan naar gewenste hoogte */
+  height: auto;
+  width: auto;
+}
+
+.entry-content ul,
+.acf-block ul,
+.kolom-tekst ul,
+.tekst-afbeelding__content ul,
+.entry-content ol,
+.acf-block ol,
+.kolom-tekst ol,
+.tekst-afbeelding__content ol,
+.single-post__content ol {
+  margin-top: 15px;
+  padding-left: 0;
+}
+
+.entry-content ul,
+.acf-block ul,
+.kolom-tekst ul,
+.tekst-afbeelding__content ul {
+  list-style: none;
+}
+
+.entry-content ol,
+.acf-block ol,
+.kolom-tekst ol,
+.tekst-afbeelding__content ol,
+.single-post__content ol {
+  list-style: none;
+  counter-reset: li;
+}
+
+.entry-content ul li,
+.acf-block ul li,
+.kolom-tekst ul li,
+.tekst-afbeelding__content ul li,
+.entry-content ol li,
+.acf-block ol li,
+.kolom-tekst ol li,
+.tekst-afbeelding__content ol li,
+.single-post__content ol li {
+  position: relative;
+  margin-bottom: 10px;
+  font-size: 1rem;
+  color: #444;
+}
+
+.entry-content ul li,
+.acf-block ul li,
+.kolom-tekst ul li,
+.tekst-afbeelding__content ul li {
+  padding-left: 28px;
+}
+
+.entry-content ol li,
+.acf-block ol li,
+.kolom-tekst ol li,
+.tekst-afbeelding__content ol li,
+.single-post__content ol li {
+  padding-left: 35px;
+  counter-increment: li;
+}
+
+/* UL icon */
+.entry-content ul li::before,
+.acf-block ul li::before,
+.kolom-tekst ul li::before,
+.tekst-afbeelding__content ul li::before {
+  content: "✔";
+  width: 18px;
+  height: 18px;
+  font-size: 12px;
+}
+
+/* OL counter */
+.entry-content ol li::before,
+.acf-block ol li::before,
+.kolom-tekst ol li::before,
+.tekst-afbeelding__content ol li::before,
+.single-post__content ol li::before {
+  content: counter(li);
+  width: 24px;
+  height: 24px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* Shared ::before styles */
+.entry-content ul li::before,
+.acf-block ul li::before,
+.kolom-tekst ul li::before,
+.tekst-afbeelding__content ul li::before,
+.entry-content ol li::before,
+.acf-block ol li::before,
+.kolom-tekst ol li::before,
+.tekst-afbeelding__content ol li::before,
+.single-post__content ol li::before {
+  position: absolute;
+  left: 0;
+  top: 2px;
+  background-color: #c8a97e;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+html {
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: 'Liter', sans-serif;
+  font-size: 16px; /* 16px als je font-size 62.5% gebruikt */
+  color: #333;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+em {
+    color: #c8a97e;
+    font-style: normal;
+    font-weight: bold;
+}
+
+strong {
+  font-weight: 600;
+  color: #000;
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    color: #000; /* Pas aan naar je stijl */
+}
+
+h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem); /* Dynamische grootte */
+    font-weight: bold;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+
+h2 {
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    font-weight: bold;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+
+/* 🔹 Container voor de content (behalve hero) */
+.container {
+    max-width: 1380px;
+    margin: 0 auto;
+    padding: 0 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.header-flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+}
+
+/* 🔹 Logo blijft links */
+.logo {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 0;
+  transition: all 0.3s ease; /* Smooth animation */
+}
+
+/* 🔹 Navigatie menu exact in het midden */
+.main-navigation {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: all 0.3s ease; /* Smooth animation */
+}
+
+/* 🔹 Extra element rechts (bijvoorbeeld een CTA-button of icon) */
+.header-right {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  transition: all 0.3s ease; /* Smooth animation */
+}
+
+.mobile-nav {
+  background-color: #222 !important; /* Donkere achtergrondkleur */
+  color: #fff !important; /* Witte tekstkleur */}
+/* 🔹 Zorgt ervoor dat menu-items inline staan */
+
+.nav-menu {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  transition: all 0.3s ease; /* Smooth animation */
+}
+
+.nav-menu li {
+  padding: 10px 15px;
+}
+
+.nav-menu li a {
+  position: relative;
+  display: inline-block;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  padding: 0; /* padding hier weghalen */
+}
+
+.nav-menu li a::after {
+  content: "";
+  position: absolute;
+  bottom: -3px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: #ffffff;
+  transform: translateX(-50%);
+  transition: width 0.3s ease;
+}
+
+.nav-menu li a:hover::after {
+  width: 100%;
+}
+
+.site-header {
+  position: fixed; /* Fixeer de header */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  transition: background 0.3s ease, box-shadow 0.3s ease, height 0.3s ease;
+  z-index: 1000;
+}
+
+/* 🔹 Header transparant BOVEN de hero */
+.site-header.transparent {
+  background: rgba(0, 0, 0, 0); /* Volledig transparant */
+  position: fixed; /* Zorgt dat hij blijft staan */
+  box-shadow: none;
+  z-index: 100;
+  transition: all 0.3s ease; /* Smooth animation */
+}
+
+/* 🔹 Header wordt donker en kleiner bij scroll */
+.site-header.scrolled {
+  background: #222; /* Donkerder bij scroll */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  height: 75px; /* Minder hoogte bij scroll */
+  transition: all 0.3s ease; /* Smooth animation */
+}
+
+
+
+.header-button .btn {
+  background-color: #222;
+  color: white;
+  font-family: 'Playfair Display', serif;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 12px 24px;
+  border-radius: 3px;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+  border: none;
+}
+
+.header-button .btn:hover {
+  background: #c8a97e; /* Luxe goud */
+  border: none;
+  text-decoration: none !important;
+}
+
+/* 🔹 Wanneer de header gescrolled is, wijzig de button kleuren */
+.site-header.scrolled .header-button .btn {
+  background-color: white;
+  color: black;
+  font-size: 16px; /* Maak de button iets kleiner */
+  padding: 10px 20px; /* Pas de padding aan */
+  transition: all 0.3s ease; /* Smooth animation */
+}
+
+.site-header.scrolled .header-button .btn:hover {
+  background: #c8a97e; /* Luxe goud */
+  color: white;
+}
+
+
+
+/* 🔹 Algemene button styling */
+.btn {
+    display: inline-block;
+    font-family: 'Playfair Display', serif; /* Vervang met het besproken font */
+    background: #222; /* Primaire kleur */
+    color: white;
+    padding: 12px 20px;
+    font-size: 18px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+}
+
+.btn:hover {
+    background: #c8a97e; /* Donkergrijs */
+    color: white;
+    border-color: #333333;
+    text-decoration: none !important;
+}
+
+
+/* 🔹 Disabled button styling */
+.btn.disabled {
+    background: gray;
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+
+/* 🔹 Hero basis */
+.hero {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    padding: 0;
+    overflow: hidden;
+}
+
+@keyframes kenburns {
+    0% {
+        transform: scale(1) translate(0, 0);
+    }
+    50% {
+        transform: scale(1.1) translate(-5%, -5%);
+    }
+    100% {
+        transform: scale(1) translate(0, 0);
+    }
+}
+
+/* 🔹 Achtergrond met Ken Burns-effect */
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1; /* Zorg dat de afbeelding onder de overlay blijft */
+    animation: zoomSlideFade 12s ease-in-out infinite alternate;
+    content-visibility: auto;
+}
+
+@keyframes zoomSlideFade {
+  0% {
+      transform: scale(1) translateX(0);
+      opacity: 1;
+  }
+  50% {
+      transform: scale(1.05) translateX(-1%);
+      opacity: 0.97;
+  }
+  100% {
+      transform: scale(1.1) translateX(-2%);
+      opacity: 0.95;
+  }
+}
+
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.67); /* Pas transparantie aan indien nodig */
+    z-index: 1;
+    pointer-events: none;
+}
+
+
+/* 🔹 Hero content styling */
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    padding: 40px;
+    text-align: center;
+}
+
+.hero h1 {
+    color: white; /* Wit maken */
+    font-family: 'Playfair Display', serif; /* Of je gekozen titel-font */
+    font-size: 4rem; /* Maak de titel groot */
+    font-weight: 700;
+    text-align: center;
+}
+
+/* 🔹 Hero subtitel (normale tekst) */
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    color: #ffffff !important;
+}
+
+
+
+/* 🔹 Standaard verborgen voor desktop */
+.mobile-nav,
+.mobile-button {
+    display: none;
+}
+
+
+.tekst-afbeelding {
+  display: flex;
+  gap: 2rem;
+  align-items: stretch;
+}
+
+.tekst-afbeelding__wrapper {
+  display: flex;
+  gap: 70px;
+  align-items: stretch;
+}
+
+.tekst-afbeelding__img-wrapper {
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+
+.tekst-afbeelding__content,
+.tekst-afbeelding__afbeelding {
+  flex: 1 1 50%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.tekst-afbeelding__content {
+  flex: 0 1 65%;
+  max-width: 65%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100%;
+}
+
+.tekst-afbeelding__afbeelding {
+  display: flex;
+  overflow: hidden;
+  align-self: stretch;
+  max-height: clamp(300px, 50vh, 600px);
+}
+
+.main--bg-white .tekst-afbeelding__afbeelding {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+
+.tekst-afbeelding__img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 16px;
+}
+/* Afbeelding positie */
+.afbeelding-rechts .tekst-afbeelding__afbeelding {
+  order: 2;
+}
+
+.afbeelding-rechts .tekst-afbeelding__content {
+  order: 1;
+}
+
+.afbeelding-links .tekst-afbeelding__afbeelding {
+  order: 1;
+}
+
+.afbeelding-links .tekst-afbeelding__content {
+  order: 2;
+}
+
+.tekst-afbeelding .btn {
+  margin-top: 20px;
+}
+
+.tekst-afbeelding__content.no-button {
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+.kolommen-blok {
+  padding: 60px 20px;
+}
+
+.kolommen-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 70px;
+  justify-content: flex-start;
+}
+
+/* kolombreedtes per aantal */
+.kolommen-container.cols-2 { --kolom-breedte: calc((100% - 70px) / 2); }
+.kolommen-container.cols-3 { --kolom-breedte: calc((100% - 140px) / 3); }
+.kolommen-container.cols-4 { 
+  --kolom-breedte: calc((100% - 120px) / 4); /* kleiner totaal gap voor cols-4 */
+  gap: 40px; /* kleinere gap specifiek voor 4 kolommen */
+}
+
+.kolommen-container.cols-4 img {
+  max-height: 200px;
+  height: 180px;
+}
+
+  /* kolom item */
+  .kolom {
+  flex: 0 0 var(--kolom-breedte);
+  max-width: var(--kolom-breedte);
+  background: transparent;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  text-align: left;
+  box-sizing: border-box;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 1s ease forwards;
+  
+  }
+  
+  .kolom img {
+    width: 100%;
+    height: auto;
+    max-height: 220px; /* Iets meer hoogte voor een modernere uitstraling */
+    object-fit: cover;
+    border: 1px solid #e0e0e0; /* Subtiele rand om de afbeelding */
+    border-radius: 16px; /* Grotere radius voor een elegantere look */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtiele schaduw voor diepte */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animatie voor hover-effect */
+  }  
+  /* tekst */
+  .kolom-titel {
+    font-size: 1.3rem;
+    margin: 10px 0;
+    color: black;
+  }
+  
+  .kolom-tekst {
+  font-size: 1rem;
+  color: black;
+  }
+
+
+  
+  .faq-items {
+  max-width: 800px;
+  margin: 0 auto;
+  }
+  
+  .faq-item {
+  border-bottom: 1px solid #e0e0e0;
+  padding: 30px 0;
+  }
+  
+  .faq-vraag {
+  background: none;
+  border: none;
+  padding: 0;
+  width: 100%;
+  text-align: left;
+  font-size: 1.2rem;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: color 0.2s ease;
+  cursor: pointer;
+  }
+  .faq-vraag:hover {
+  color: #c8a97e;
+  }
+  
+  .faq-item.open .faq-vraag {
+  color: #c8a97e;
+  }
+  
+  .faq-vraag .icoon {
+  font-size: 1.5rem;
+  color: #c8a97e;
+  transition: transform 0.3s ease;
+  }
+  
+  .faq-item.open .faq-vraag .icoon {
+  transform: rotate(45deg);
+  }
+  
+  .faq-antwoord {
+  display: none;
+  padding-top: 10px;
+  animation: fadeIn 0.3s ease;
+  color: #444;
+  margin: 10px 0 0;
+  padding: 0;
+    }
+
+  .faq-item:last-child {
+    margin-bottom: 0;
+    border-bottom: none;
+    }
+    
+  
+  .faq-item.open .faq-antwoord {
+  display: block;
+  }
+  
+  @keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+  }
+  
+  .main--bg-dark .faq-vraag {
+  color: #fff !important;
+  }
+  
+  .faq-titel,
+.faq-subtitel {
+  text-align: center;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .contactblok__wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    align-items: flex-start;
+    min-height: 0; /* of: hoogte afhankelijk van je content */
+
+  }
+  
+  .contactblok__tekst {
+    flex: 1 1 40%;
+    position: sticky;
+    top: 80px;
+    align-self: flex-start;
+    height: 100%;
+
+  }
+    
+
+  .contactblok__wrapper,
+.container,
+main {
+  overflow: visible;
+}
+
+  
+  .contactblok__formwrap {
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+    gap: 50px;
+  }
+  .contactblok__form {
+    flex: 1 1 55%;
+    background: #967f60;
+    padding: 32px;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+    width: 100%;
+  }
+  
+  .form-table {
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: collapse;
+  
+  }
+  
+  .form-table td {
+    padding: 0;
+    vertical-align: top;
+
+  }
+
+  .form-table tr > td {
+    padding-bottom: 25px;
+  }
+  
+
+  /* Horizontale ruimte tussen kolommen */
+.form-table td:first-child {
+    padding-right: 20px;
+  }
+  
+  
+  .form-heading {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 2rem;
+    text-align: left;
+  }  
+  
+  .form-table input,
+  .form-row textarea.form-input {
+    position: relative;
+    width: 100%;
+    padding: 18px 14px 6px;
+    font-size: 1rem;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    background: transparent;
+    font-family: 'marope', sans-serif;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+    color: white;
+  }
+
+  .form-row textarea.form-input {
+    min-height: 100px; /* of bijv. 100px */
+  }
+  
+  
+  .form-table input::placeholder,
+  .form-row textarea.form-input::placeholder {
+    color: white;
+    opacity: 1;
+    transition: transform 0.2s ease, font-size 0.2s ease;
+    transform-origin: 0 0;
+    position: relative;
+    z-index: 1;
+  }
+    
+  .form-table input:focus::placeholder,
+  .form-row textarea.form-input:focus::placeholder {
+    transform: translateY(-18px) scale(0.85);
+    font-size: 1rem;
+    opacity: 0.8;
+  }
+
+  .form-table input:focus,
+.form-row textarea.form-input:focus {
+  outline: none; /* verwijdert die standaard klik-rand */
+  border-color: white;
+  box-shadow: none; /* voorkomt extra rand bij sommige browsers */
+}
+  
+  
+  /* Responsive stacking op mobiel */
+  @media (max-width: 768px) {
+    .form-table tr {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+  
+    .form-table td {
+      width: 100%;
+    }
+  }
+
+  .form-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: white;
+    font-family: 'marope', sans-serif;
+  }
+
+  form .btn {
+    font-family: 'marope', sans-serif;
+  }
+
+  .wpcf7-response-output {
+    padding: 15px 20px;
+    margin-top: 20px;
+    border-radius: 6px;
+    font-size: 1rem;
+  }
+  
+  .wpcf7-mail-sent-ok {
+    background-color: #e0f7e9;
+    color: #2e7d32;
+    border: 1px solid #a5d6a7;
+  }
+  
+  .wpcf7-validation-errors,
+  .wpcf7-form.invalid .wpcf7-response-output {
+    background-color: #fdecea;
+    color: #c62828;
+    border: 1px solid #c62828;
+  }
+  
+  .wpcf7-not-valid-tip {
+    color: #ff8989;
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  .site-footer {
+    background-color: #222; /* Donker achtergrondkleur */
+    color: #fff;
+    padding: 100px 0 10px;
+    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+    background-size: 10px 10px; /* Pas de grootte van de stippen aan */
+  }
+
+.footer-content {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+  
+  .footer-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    align-items: start;
+    width: 100%;
+  }
+  
+  .footer-column {
+    width: 100%;
+  }
+
+    
+.footer-column ul li {
+  margin-bottom: 0.75rem; /* pas aan naar wens */
+}
+
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-menu a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.footer-menu a:hover,
+.footer-column a:hover:not(.custom-logo-link) {
+  text-decoration: none;
+  position: relative;
+}
+
+.footer-menu a::after,
+.footer-column a:not(.custom-logo-link)::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 0;
+  height: 1px;
+  background-color: currentColor;
+  transition: width 0.3s ease, background-color 0.3s ease, opacity 0.3s ease;
+}
+
+.footer-menu a:hover::after,
+.footer-column a:hover:not(.custom-logo-link)::after {
+  width: 100%;
+}
+
+.footer-column h4 {
+    color: #ffffff; /* of jouw gewenste kleur */
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.footer-column a {
+    color: White;
+    font-size: 1rem;
+    font-weight: inherit;
+}
+
+
+.onderfooter {
+    text-align: center;
+    padding: 1rem 0;
+    font-size: 0.875rem;
+    border-top: 1px solid rgba(255,255,255,0.2);
+}
+
+.onderfooter span {
+    display: inline-block;
+    padding-right: 10px;
+}
+
+
+.footer-column .custom-logo {
+    display: block;
+    max-height: 25px; /* pas aan naar wens */
+    width: auto;
+    object-fit: contain;
+    margin-bottom: 1rem;
+}
+
+.footer-column i {
+    margin-right: 0.5rem;
+    color: #fff; /* of je gewenste kleur */
+}
+
+.single-post__wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 50px;
+  align-items: flex-start;
+  min-height: 0; /* of: hoogte afhankelijk van je content */
+  padding: 50px 0;
+}
+
+/* 🔹 Hero op blogpost (zelfde als hero, maar met lagere hoogte en links uitgelijnd) */
+.hero.post-hero {
+    position: relative;
+    width: 100%;
+    height: 70vh; /* Iets minder hoog dan homepage hero */
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    overflow: hidden;
+    padding: 0;
+}
+
+/* Achtergrondbeeld met kenburns effect (optioneel uitzetten hier) */
+.hero.post-hero .hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1;
+    animation: none !important;
+}
+
+/* Donkere overlay */
+.hero.post-hero .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.633); /* Donkerdere overlay */
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Inhoud binnen container */
+.hero.post-hero .container {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    padding: 0;
+}
+
+/* Hero content (titel) links uitgelijnd */
+.hero-content--left h1 {
+  text-align: left;
+  margin-left: 0;
+  padding: 0;
+}
+
+@media screen and (min-width: 783px) {
+    body.admin-bar .site-header {
+        top: 32px;
+    }
+}
+
+
+.hero-content--left h1 {
+    color: white;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    margin-bottom: 30px;
+    line-height: 1.2;
+}
+
+.hero-content--left .post-date {
+    color: rgba(255,255,255,0.7);
+    font-size: 1rem;
+    margin-top: 10px;
+    text-align: left;
+    margin-left: 0;
+}
+
+
+.sidebar-cards {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 20px;
+  }
+  
+  
+  .sidebar-card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease-in-out;
+    text-decoration: none;
+    border: 1px solid #e0e0e0;
+  }
+  
+  .sidebar-card:hover {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  .sidebar-card a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    gap: 15px;
+    padding: 15px;
+    color: #000;
+  }
+
+  .sidebar-card a:hover {
+    text-decoration: none;
+  }
+  
+  .sidebar-card__thumb img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 6px;
+    flex-shrink: 0;
+  }
+  
+  .sidebar-card__title {
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.4;
+    color: #333;
+    text-decoration: none;
+  }
+
+  .sidebar-card__date {
+    font-size: 0.85rem;
+    color: #888;
+    margin-top: 4px;
+  }
+  
+  
+  .single-post__sidebar {
+    position: sticky;
+    top: 100px; /* afstand vanaf bovenkant bij scroll */
+    align-self: flex-start;
+    height: fit-content;
+}
+
+.single-post__sidebar h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #000;
+    font-weight: 600;
+}
+   
+
+.sidebar-card__title,
+.sidebar-card__date {
+  display: block;
+}
+
+.blog-archive {
+    padding: 100px 0;
+  }
+  
+  .archive-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    text-align: center;
+    margin-bottom: 60px;
+  }
+  
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 40px;
+  }
+
+  .blog-card__date {
+    font-size: 0.8rem;
+    margin-top: 8px;
+    font-weight: 300;
+  }
+  
+  
+  .blog-card {
+    background: #967f601f;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+    overflow: hidden;
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+  
+  .blog-card:hover {
+    transform: translateY(-4px);
+    background: #967f602e;
+  }
+
+ .blog-card a:hover {
+  text-decoration: none;
+ }
+
+ .blog-card__excerpt {
+  margin: 12px 0;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+  
+  .blog-card a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    height: 100%;
+  }
+  
+  .blog-card__thumb img {
+    width: 100%;
+    height:150px;
+    object-fit: cover;
+    display: block;
+  }
+  
+  .blog-card__content {
+    padding: 20px;
+  }
+  
+  .blog-card__content h2 {
+    font-size: 1.2rem;
+    margin: 0;
+    font-family: 'Playfair Display', serif;
+  }
+  
+
+.blog-archive .archive-title {
+    padding-top: 75px;
+}
+
+.masonry {
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  max-width: 100vw;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 1rem;
+  cursor: grab;
+
+  /* scrollbars verbergen */
+  scrollbar-width: none;          /* Firefox */
+  -ms-overflow-style: none;       /* IE/Edge */
+}
+.masonry::-webkit-scrollbar {
+  display: none;                  /* Chrome, Safari */
+}
+
+.masonry-item {
+  flex: 0 0 calc((100% - 3 * 1.5rem) / 4);
+  scroll-snap-align: start;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.masonry-item img {
+  width: 100%;
+  height: 300px;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.masonry-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: white;
+  border: none;
+  font-size: 1.25rem;         /* kleiner */
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;         /* volledig rond */
+  z-index: 10;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: background 0.3s ease, transform 0.2s ease;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.masonry-arrow:hover {
+  background: #f3f3f3;
+  transform: translateY(-50%) scale(1.05);
+}
+
+.masonry-arrow.left {
+  left: 0.5rem;
+}
+
+.masonry-arrow.right {
+  right: 0.5rem;
+}
+@media (max-width: 768px) {
+  .desktop-only { display: none; }
+}
+
+/* Fade-in animatie */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.gallery-navigation {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.gallery-navigation .dots {
+  display: flex;
+  gap: 8px;
+}
+
+.main--bg-dark .gallery-navigation .dot {
+  background-color: #fff;
+}
+
+.gallery-navigation .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #999;
+  opacity: 0.5;
+  cursor: pointer;
+  transition: background-color 0.3s, opacity 0.3s;
+}
+
+.gallery-navigation .dot.active {
+  background-color: #000;
+  opacity: 1;
+}
+
+
+.fourofour {
+  padding: 120px 0;
+  text-align: center;
+}
+
+.fourofour h1 {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  margin-bottom: 20px;
+}
+
+.fourofour p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+.fourofour .btn {
+  background: #222;
+  color: white;
+  padding: 12px 24px;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+
+.fourofour .btn:hover {
+  background: #c8a97e;
+  color: white;
+}
+
+body.force-scrolled-header .site-header {
+  background: #222;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+body.force-scrolled-header .site-header .header-button .btn {
+  background-color: #fff;
+  color: #222;
+}
+
+
+.tekst-tabel-blok {
+  padding: 4rem 0;
+
+  .tekst-tabel-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+
+    &.alleen-tabel .tekst {
+      display: none;
+    }
+  }
+
+  .tekst {
+    flex: 1 1 300px;
+  }
+
+  .tabel {
+    flex: 1 1 300px;
+    margin-top: 10px;
+    overflow-x: auto;
+    border-radius: 16px;
+
+    table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      border-radius: 16px;
+      overflow: hidden;
+
+      thead {
+        background-color: #f5f5f5;
+        font-weight: bold;
+      }
+
+      th,
+      td {
+        padding: 0.75rem;
+        border: 1px solid #ccc;
+        text-align: left;
+      }
+    }
+  }
+
+  &.main--bg-dark {
+    .tabel table thead {
+      background-color: white;
+      color: #000;
+    }
+  }
+}
+
+.tekst-tabel-blok .tabel {
+  overflow-x: auto;
+}
+
+.tekst-tabel-blok .tabel table {
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.tekst-tabel-blok .tabel thead tr:first-child th:first-child {
+  border-top-left-radius: 16px;
+}
+
+.tekst-tabel-blok .tabel thead tr:first-child th:last-child {
+  border-top-right-radius: 16px;
+}
+
+.tekst-tabel-blok .tabel tbody tr:last-child td:first-child {
+  border-bottom-left-radius: 16px;
+}
+
+.tekst-tabel-blok .tabel tbody tr:last-child td:last-child {
+  border-bottom-right-radius: 16px;
+}
