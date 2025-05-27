@@ -29,18 +29,16 @@ $toon_knop = !empty($knop_label);
       </div>
 
       <?php if ($afbeelding): ?>
-        <div class="tekst-afbeelding__afbeelding">
-  <div class="tekst-afbeelding__img-wrapper">
-    <img 
-      src="<?= esc_url($afbeelding['sizes']['large']); ?>" 
-      alt="<?= esc_attr($afbeelding['alt']); ?>" 
-      class="tekst-afbeelding__img" 
-      loading="lazy"
-    />
-  </div>
-</div>
-
-
+        <?php $is_svg = isset($afbeelding['mime_type']) && $afbeelding['mime_type'] === 'image/svg+xml'; ?>
+        <div class="tekst-afbeelding__afbeelding<?= $is_svg ? ' is-svg' : ''; ?>">
+          <div class="tekst-afbeelding__img-wrapper">
+            <img 
+              src="<?= esc_url($is_svg ? $afbeelding['url'] : $afbeelding['sizes']['large']); ?>" 
+              alt="<?= esc_attr($afbeelding['alt']); ?>" 
+              class="tekst-afbeelding__img" 
+              loading="lazy"
+            />
+          </div>
         </div>
       <?php endif; ?>
 

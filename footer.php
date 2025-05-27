@@ -1,5 +1,5 @@
 <footer class="site-footer">
-  <div class="container">
+  <div class="container-wide">
     <div class="footer-grid">
       <!-- Kolom 1: Contact -->
       <div class="footer-column">
@@ -65,6 +65,21 @@
         ?>
       </div>
 
+            <!-- Kolom 5: Projecten -->
+<div class="footer-column">
+  <h4>Projecten</h4>
+  <?php
+  wp_nav_menu(array(
+    'theme_location' => 'footer_projecten',
+    'container'      => 'ul',
+    'menu_class'     => 'footer-menu',
+    'fallback_cb'    => false
+  ));
+  ?>
+</div>
+
+
+
       <!-- Kolom 4: Blog -->
       <div class="footer-column">
         <h4>Blog</h4>
@@ -83,11 +98,12 @@
           <?php endforeach; wp_reset_query(); ?>
         </ul>
       </div>
+
     </div>
   </div>
 
   <!-- Onderfooter -->
-  <div class="container onderfooter">
+  <div class="container-wide onderfooter">
     <div class="onderfooter-flex">
       <span>KVK: 12345678</span>
       <span>BTW: NL001234567B01</span>

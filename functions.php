@@ -17,6 +17,7 @@ function chalet_theme_setup() {
         'footer_menu' => __('Footer Menu', 'chalet-theme'),
         'footer_chalets'   => 'Footer Chalets',
         'footer_over_ons'  => 'Footer Over ons',
+        'footer_projecten'   => 'Footer menu Projecten',
      // ✅ Footer menu toegevoegd
     ));
 

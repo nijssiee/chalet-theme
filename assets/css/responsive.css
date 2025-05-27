@@ -457,5 +457,9 @@
   .mobile-only {
     display: none;
   }
+
+  .masonry-arrow {
+    display: none;
+  }
   
 }

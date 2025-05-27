@@ -185,6 +185,15 @@ h2 {
     box-sizing: border-box;
 }
 
+.container-wide {
+  width: 100%;
+  padding-left: 4rem;
+  padding-right: 4rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
 .header-flex {
     display: flex;
     align-items: center;
@@ -518,6 +527,7 @@ h2 {
   max-height: clamp(300px, 50vh, 600px);
 }
 
+
 .main--bg-white .tekst-afbeelding__afbeelding {
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
 }
@@ -530,6 +540,31 @@ h2 {
   display: block;
   border-radius: 16px;
 }
+
+.tekst-afbeelding__afbeelding.is-svg {
+  box-shadow: none !important;
+  background: none !important;
+  justify-content: center;
+  align-items: center;
+}
+
+.tekst-afbeelding__afbeelding.is-svg .tekst-afbeelding__img-wrapper {
+  box-shadow: none !important;
+  background: none !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tekst-afbeelding__afbeelding.is-svg .tekst-afbeelding__img {
+  width: auto;
+  height: auto;
+  max-width: 220px;
+  max-height: 220px;
+  object-fit: contain;
+  border-radius: 0;
+}
+
 /* Afbeelding positie */
 .afbeelding-rechts .tekst-afbeelding__afbeelding {
   order: 2;
@@ -878,9 +913,10 @@ main {
   .site-footer {
     background-color: #222; /* Donker achtergrondkleur */
     color: #fff;
-    padding: 100px 0 10px;
+    padding-top: 100px;
     background-image: radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
     background-size: 10px 10px; /* Pas de grootte van de stippen aan */
+    padding-bottom: 0!important;
   }
 
 .footer-content {
@@ -890,13 +926,14 @@ main {
     align-items: center;
 }
   
-  .footer-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
-    align-items: start;
-    width: 100%;
-  }
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 2rem;
+  align-items: start;
+  width: 100%;
+  max-width: none;
+}
   
   .footer-column {
     width: 100%;
@@ -956,7 +993,7 @@ main {
 
 .onderfooter {
     text-align: center;
-    padding: 1rem 0;
+    padding: 10px 0;
     font-size: 0.875rem;
     border-top: 1px solid rgba(255,255,255,0.2);
 }
@@ -972,7 +1009,8 @@ main {
     max-height: 25px; /* pas aan naar wens */
     width: auto;
     object-fit: contain;
-    margin-bottom: 1rem;
+    margin-bottom: 3rem;
+    margin-top: 3rem;
 }
 
 .footer-column i {
