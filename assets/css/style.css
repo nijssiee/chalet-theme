@@ -390,7 +390,7 @@ h2 {
   background: #222; /* Primaire kleur */
   color: white;
   padding: 12px 20px;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 600;
   text-decoration: none;
   border-radius: 3px;
@@ -1948,4 +1948,114 @@ input[type="submit"].btn-actie:hover {
     flex: 0 0 60%;
     max-width: 60%;
   }
+}
+
+.paginalinks-blok {
+  padding: 60px 20px;
+}
+
+.paginalinks-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 70px;
+  justify-content: flex-start;
+}
+
+/* kolombreedtes per aantal */
+.paginalinks-container.cols-2 {
+  --kolom-breedte: calc((100% - 70px) / 2);
+}
+.paginalinks-container.cols-3 {
+  --kolom-breedte: calc((100% - 140px) / 3);
+}
+.paginalinks-container.cols-4 {
+  --kolom-breedte: calc((100% - 120px) / 4);
+  gap: 40px;
+}
+
+/* item */
+.paginalink-item {
+  flex: 0 0 var(--kolom-breedte);
+  max-width: var(--kolom-breedte);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-decoration: none;
+  background: white;
+  border-radius: 16px;
+  box-sizing: border-box;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  color: inherit;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 1s ease forwards;
+  overflow: hidden;
+}
+
+.paginalink-item:hover {
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.13);
+  text-decoration: none;
+}
+
+.paginalink-inhoud {
+  padding: 0 20px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 5px;
+  
+}
+
+.paginalink-afbeelding img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  transition: filter 0.2s ease;
+    border-bottom: 7px solid #c8a97e;
+}
+
+.paginalink-item:hover .paginalink-afbeelding img {
+  filter: brightness(0.9);
+}
+
+.paginalink-item:hover .paginalink-afbeelding img {
+  filter: brightness(0.95);
+}
+
+/* titel */
+.paginalink-titel {
+  font-size: 1.5rem;
+  margin: 10px 0;
+  color: black;
+    transition: color 0.2s ease;
+}
+.paginalink-item:hover .paginalink-titel {
+  color: #c8a97e;
+  text-decoration: none;
+}
+
+/* tekst */
+.paginalink-tekst {
+  font-size: inherit;
+  color: black;
+  font-weight: normal;
+  flex-grow: 1;
+}
+
+/* button onderaan */
+.paginalink-button {
+  margin-top: auto;
+}
+
+
+.paginalink-button .btn {
+  display: inline-block;
+  font-size: 16px;
+}
+
+.paginalink-item:hover .paginalink-button .btn {
+  background: #444 !important;
 }

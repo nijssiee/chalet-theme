@@ -28,7 +28,7 @@
     height: 100vh;
     z-index: 0;
     /* Gebruik background-image ipv <img> op mobiel */
-    background-image: url('/pad/naar/jouw/afbeelding.jpg'); /* Dynamisch in PHP */
+    background-image: url('/pad/naar/jouw/afbeelding.jpg'); /* Zet hier een statisch pad of gebruik inline styles via PHP */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -42,6 +42,7 @@
     overflow: hidden;
   }
 }
+
 
   
 @media (max-width: 768px) {
@@ -206,25 +207,31 @@
 
 
 @media (max-width: 1024px) {
-    .kolom {
-        flex: 0 0 var(--col-mobiel, 100%);
-        max-width: var(--col-mobiel, 100%);
-    }
+  .kolom,
+  .paginalink-item {
+    flex: 0 0 var(--col-mobiel, 100%);
+    max-width: var(--col-mobiel, 100%);
+  }
 
-      /* Minder ruimte tussen kolommen op mobiel */ 
-    .kolommen-container {
-      gap: 20px; /* Verklein de ruimte tussen kolommen */
-    }
+  /* Minder ruimte tussen kolommen/kaarten op mobiel */
+  .kolommen-container {
+    gap: 20px; /* Verklein de ruimte tussen kolommen */
+  }
+  .paginalinks-container {
+    gap: 40px; /* Minder ruimte tussen kaarten */
+  }
 
-    .kolom img {
-      max-height: 200px;
-      }
-    
-    .kolommen-blok {
-      padding: 0;
-    }
-  
+  .kolom img,
+  .paginalink-afbeelding img {
+    max-height: 200px;
+  }
+
+  .kolommen-blok,
+  .paginalinks-blok {
+    padding: 0;
+  }
 }
+
 @media (max-width: 768px) {
     .faq-items {
         padding-left: 0;
