@@ -1,94 +1,80 @@
-@import url('https://fonts.googleapis.com/css2?family=Liter:wght@100..900&family=Manrope:wght@400..700&family=Poppins:wght@300;400;600&family=Playfair+Display:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Liter:wght@100..900&family=Manrope:wght@400..700&family=Poppins:wght@300;400;600&family=Playfair+Display:wght@400;700&display=swap");
+.grecaptcha-badge {
+  visibility: hidden;
+}
+
+  .tekst-tabel-blok .tekst {
+    position: sticky;
+    top: 120px;
+    align-self: flex-start;
+    z-index: 1;
+  }
+
+  .contactblok__tekst {
+    position: sticky;
+    top: 120px;
+    align-self: flex-start;
+  }
+	
+@media (max-width: 767px) {
+  .tekst-tabel-blok .tekst,
+  .contactblok__tekst, single-post__sidebar {
+    position: static;
+  }
+}
+
+
 
 /* 🔹 Algemene resets */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 .custom-logo {
-  max-height: 20px; /* Pas aan naar gewenste hoogte */
+  max-height: 30px;
   height: auto;
   width: auto;
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
 }
 
-.entry-content ul,
-.acf-block ul,
-.kolom-tekst ul,
-.tekst-afbeelding__content ul,
-.entry-content ol,
-.acf-block ol,
-.kolom-tekst ol,
-.tekst-afbeelding__content ol,
-.single-post__content ol {
+.styled-lists ul,
+.styled-lists ol {
   margin-top: 15px;
   padding-left: 0;
-}
-
-.entry-content ul,
-.acf-block ul,
-.kolom-tekst ul,
-.tekst-afbeelding__content ul {
   list-style: none;
 }
 
-.entry-content ol,
-.acf-block ol,
-.kolom-tekst ol,
-.tekst-afbeelding__content ol,
-.single-post__content ol {
-  list-style: none;
+.styled-lists ol {
   counter-reset: li;
 }
 
-.entry-content ul li,
-.acf-block ul li,
-.kolom-tekst ul li,
-.tekst-afbeelding__content ul li,
-.entry-content ol li,
-.acf-block ol li,
-.kolom-tekst ol li,
-.tekst-afbeelding__content ol li,
-.single-post__content ol li {
+.styled-lists li {
   position: relative;
   margin-bottom: 10px;
   font-size: 1rem;
   color: #444;
 }
 
-.entry-content ul li,
-.acf-block ul li,
-.kolom-tekst ul li,
-.tekst-afbeelding__content ul li {
+.styled-lists ul li {
   padding-left: 28px;
 }
 
-.entry-content ol li,
-.acf-block ol li,
-.kolom-tekst ol li,
-.tekst-afbeelding__content ol li,
-.single-post__content ol li {
+.styled-lists ol li {
   padding-left: 35px;
   counter-increment: li;
 }
 
-/* UL icon */
-.entry-content ul li::before,
-.acf-block ul li::before,
-.kolom-tekst ul li::before,
-.tekst-afbeelding__content ul li::before {
+.styled-lists ul li::before {
   content: "✔";
   width: 18px;
   height: 18px;
   font-size: 12px;
 }
 
-/* OL counter */
-.entry-content ol li::before,
-.acf-block ol li::before,
-.kolom-tekst ol li::before,
-.tekst-afbeelding__content ol li::before,
-.single-post__content ol li::before {
+.styled-lists ol li::before {
   content: counter(li);
   width: 24px;
   height: 24px;
@@ -96,25 +82,70 @@
   font-weight: 600;
 }
 
-/* Shared ::before styles */
-.entry-content ul li::before,
-.acf-block ul li::before,
-.kolom-tekst ul li::before,
-.tekst-afbeelding__content ul li::before,
-.entry-content ol li::before,
-.acf-block ol li::before,
-.kolom-tekst ol li::before,
-.tekst-afbeelding__content ol li::before,
-.single-post__content ol li::before {
+.styled-lists li::before {
   position: absolute;
   left: 0;
   top: 2px;
   background-color: #c8a97e;
-  color: #fff;
+  color: #f9f6f2;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+
+.offerte-keuzes ol {
+  counter-reset: li;
+  position: relative;
+  padding-left: 40px; /* ruimte voor nummerbadge */
+  margin-top: 15px;
+  list-style: none; /* default nummers weg */
+}
+
+.offerte-keuzes ol > li {
+  position: relative;
+  margin-bottom: 1rem;
+  padding-left: 35px;
+  font-size: 1rem;
+  color: #444;
+  counter-increment: li;
+}
+
+.offerte-keuzes ol > li::before {
+  content: counter(li);
+  position: absolute;
+  left: 0;
+  top: 2px;
+  width: 24px;
+  height: 24px;
+  font-size: 12px;
+  font-weight: 600;
+  background-color: #c8a97e;
+  color: #f9f6f2;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+}
+
+/* Geneste ul’s onder elke stap geen bullets/nummers */
+.offerte-keuzes ol > li > ul {
+  list-style: none;
+  margin-top: 0;
+}
+
+.offerte-keuzes ol > li > ul > li {
+  position: relative;
+  margin-bottom: 0.5rem;
+  padding-left: 0;
+  font-size: 1rem;
+  color: #444;
+}
+
+.offerte-keuzes ol > li > ul > li::before {
+  content: none;
 }
 
 
@@ -127,62 +158,66 @@ html {
   padding: 0;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: inherit;
 }
 
 body {
-  font-family: 'Liter', sans-serif;
+  font-family: "Liter", sans-serif;
   font-size: 16px; /* 16px als je font-size 62.5% gebruikt */
   color: #333;
   line-height: 1.6;
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
   width: 100%;
+	overflow: visible;
 }
 
 em {
-    color: #c8a97e;
-    font-style: normal;
-    font-weight: bold;
+  color: #c8a97e;
+  font-style: normal;
+  font-weight: bold;
 }
 
 strong {
   font-weight: 600;
-  color: #000;
+  color: inherit;
 }
 
-
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'Playfair Display', serif;
-    font-weight: 700;
-    color: #000; /* Pas aan naar je stijl */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Playfair Display", serif;
+  font-weight: 700;
+  color: #000; /* Pas aan naar je stijl */
 }
 
 h1 {
-    font-size: clamp(2.5rem, 5vw, 4rem); /* Dynamische grootte */
-    font-weight: bold;
-    line-height: 1.2;
-    margin-bottom: 20px;
+  font-size: clamp(2.5rem, 5vw, 4rem); /* Dynamische grootte */
+  font-weight: bold;
+  line-height: 1.2;
+  margin-bottom: 20px;
 }
-
 
 h2 {
   font-size: clamp(1.75rem, 3.5vw, 2.5rem);
-    font-weight: bold;
-    line-height: 1.2;
-    margin-bottom: 20px;
+  font-weight: bold;
+  line-height: 1.2;
+  margin-bottom: 20px;
 }
-
 
 /* 🔹 Container voor de content (behalve hero) */
 .container {
-    max-width: 1380px;
-    margin: 0 auto;
-    padding: 0 20px;
-    width: 100%;
-    box-sizing: border-box;
+  max-width: 1380px;
+  margin: 0 auto;
+  padding: 0 20px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .container-wide {
@@ -193,14 +228,13 @@ h2 {
   margin-right: auto;
 }
 
-
 .header-flex {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    margin: 0 auto;
-    position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
 }
 
 /* 🔹 Logo blijft links */
@@ -234,7 +268,8 @@ h2 {
 
 .mobile-nav {
   background-color: #222 !important; /* Donkere achtergrondkleur */
-  color: #fff !important; /* Witte tekstkleur */}
+  color: #f9f6f2 !important; /* Witte tekstkleur */
+}
 /* 🔹 Zorgt ervoor dat menu-items inline staan */
 
 .nav-menu {
@@ -253,7 +288,7 @@ h2 {
 .nav-menu li a {
   position: relative;
   display: inline-block;
-  color: #ffffff;
+  color: #f9f6f2;
   font-size: 16px;
   font-weight: 500;
   text-decoration: none;
@@ -268,7 +303,7 @@ h2 {
   left: 50%;
   width: 0;
   height: 2px;
-  background: #ffffff;
+  background: #f9f6f2;
   transform: translateX(-50%);
   transition: width 0.3s ease;
 }
@@ -308,12 +343,17 @@ h2 {
   transition: all 0.3s ease; /* Smooth animation */
 }
 
+.site-header .custom-logo {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+}
 
 
 .header-button .btn {
   background-color: #222;
   color: white;
-  font-family: 'Playfair Display', serif;
+  font-family: "Playfair Display", serif;
   font-size: 16px;
   font-weight: 600;
   padding: 12px 24px;
@@ -343,142 +383,163 @@ h2 {
   color: white;
 }
 
-
-
 /* 🔹 Algemene button styling */
 .btn {
-    display: inline-block;
-    font-family: 'Playfair Display', serif; /* Vervang met het besproken font */
-    background: #222; /* Primaire kleur */
-    color: white;
-    padding: 12px 20px;
-    font-size: 18px;
-    font-weight: 600;
-    text-decoration: none;
-    border-radius: 3px;
-    transition: all 0.3s ease;
-    border: none;
-    cursor: pointer;
-    text-align: center;
+  display: inline-block;
+  font-family: "Playfair Display", serif; /* Vervang met het besproken font */
+  background: #222; /* Primaire kleur */
+  color: white;
+  padding: 12px 20px;
+  font-size: 18px;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  text-align: center;
 }
 
 .btn:hover {
-    background: #c8a97e; /* Donkergrijs */
-    color: white;
-    border-color: #333333;
-    text-decoration: none !important;
+  background: #c8a97e; /* Donkergrijs */
+  color: white;
+  border-color: #333333;
+  text-decoration: none !important;
 }
-
 
 /* 🔹 Disabled button styling */
 .btn.disabled {
-    background: gray;
-    cursor: not-allowed;
-    opacity: 0.5;
+  background: gray;
+  cursor: not-allowed;
+  opacity: 0.5;
 }
-
 
 /* 🔹 Hero basis */
 .hero {
-    position: relative;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: white;
-    padding: 0;
-    overflow: hidden;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  padding: 0;
+  overflow: hidden;
 }
 
 @keyframes kenburns {
-    0% {
-        transform: scale(1) translate(0, 0);
-    }
-    50% {
-        transform: scale(1.1) translate(-5%, -5%);
-    }
-    100% {
-        transform: scale(1) translate(0, 0);
-    }
+  0% {
+    transform: scale(1) translate(0, 0);
+  }
+  50% {
+    transform: scale(1.1) translate(-5%, -5%);
+  }
+  100% {
+    transform: scale(1) translate(0, 0);
+  }
 }
 
 /* 🔹 Achtergrond met Ken Burns-effect */
 .hero-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    z-index: -1; /* Zorg dat de afbeelding onder de overlay blijft */
-    animation: zoomSlideFade 12s ease-in-out infinite alternate;
-    content-visibility: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -1; /* Zorg dat de afbeelding onder de overlay blijft */
+  animation: zoomSlideFade 12s ease-in-out infinite alternate;
+  content-visibility: auto;
 }
+
+.hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
 
 @keyframes zoomSlideFade {
   0% {
-      transform: scale(1) translateX(0);
-      opacity: 1;
+    transform: scale(1) translateX(0);
+    opacity: 1;
   }
   50% {
-      transform: scale(1.05) translateX(-1%);
-      opacity: 0.97;
+    transform: scale(1.05) translateX(-1%);
+    opacity: 0.97;
   }
   100% {
-      transform: scale(1.1) translateX(-2%);
-      opacity: 0.95;
+    transform: scale(1.1) translateX(-2%);
+    opacity: 0.95;
   }
 }
 
-
 .hero-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.67); /* Pas transparantie aan indien nodig */
-    z-index: 1;
-    pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.67); /* Pas transparantie aan indien nodig */
+  z-index: 1;
+  pointer-events: none;
 }
-
 
 /* 🔹 Hero content styling */
 .hero-content {
-    position: relative;
-    z-index: 2;
-    max-width: 800px;
-    padding: 40px;
-    text-align: center;
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+  padding: 40px;
+  text-align: center;
+}
+.hero.post-hero .hero-content--left {
+  max-width: 100%;
+  width: 100%;
+  padding: 0;
+  text-align: left;
 }
 
+
+
+.hero.post-hero {
+  position: relative;
+  width: 100%;
+  height: 85vh; /* was 70vh */
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: hidden;
+  padding: 0;
+}
+
+
+
 .hero h1 {
-    color: white; /* Wit maken */
-    font-family: 'Playfair Display', serif; /* Of je gekozen titel-font */
-    font-size: 4rem; /* Maak de titel groot */
-    font-weight: 700;
-    text-align: center;
+  color: white; /* Wit maken */
+  font-family: "Playfair Display", serif; /* Of je gekozen titel-font */
+  font-size: 4rem; /* Maak de titel groot */
+  font-weight: 700;
+  text-align: center;
 }
 
 /* 🔹 Hero subtitel (normale tekst) */
 .hero-content p {
-    font-size: 1.2rem;
-    margin-bottom: 30px;
-    color: #ffffff !important;
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  color: #f9f6f2 !important;
 }
-
-
 
 /* 🔹 Standaard verborgen voor desktop */
 .mobile-nav,
 .mobile-button {
-    display: none;
+  display: none;
 }
-
 
 .tekst-afbeelding {
   display: flex;
@@ -499,7 +560,6 @@ h2 {
   overflow: hidden;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
 }
-
 
 .tekst-afbeelding__content,
 .tekst-afbeelding__afbeelding {
@@ -527,11 +587,9 @@ h2 {
   max-height: clamp(300px, 50vh, 600px);
 }
 
-
 .main--bg-white .tekst-afbeelding__afbeelding {
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
 }
-
 
 .tekst-afbeelding__img {
   height: 100%;
@@ -603,10 +661,16 @@ h2 {
 }
 
 /* kolombreedtes per aantal */
-.kolommen-container.cols-2 { --kolom-breedte: calc((100% - 70px) / 2); }
-.kolommen-container.cols-3 { --kolom-breedte: calc((100% - 140px) / 3); }
-.kolommen-container.cols-4 { 
-  --kolom-breedte: calc((100% - 120px) / 4); /* kleiner totaal gap voor cols-4 */
+.kolommen-container.cols-2 {
+  --kolom-breedte: calc((100% - 70px) / 2);
+}
+.kolommen-container.cols-3 {
+  --kolom-breedte: calc((100% - 140px) / 3);
+}
+.kolommen-container.cols-4 {
+  --kolom-breedte: calc(
+    (100% - 120px) / 4
+  ); /* kleiner totaal gap voor cols-4 */
   gap: 40px; /* kleinere gap specifiek voor 4 kolommen */
 }
 
@@ -615,8 +679,8 @@ h2 {
   height: 180px;
 }
 
-  /* kolom item */
-  .kolom {
+/* kolom item */
+.kolom {
   flex: 0 0 var(--kolom-breedte);
   max-width: var(--kolom-breedte);
   background: transparent;
@@ -627,44 +691,40 @@ h2 {
   opacity: 0;
   transform: translateY(30px);
   animation: fadeInUp 1s ease forwards;
-  
-  }
-  
-  .kolom img {
-    width: 100%;
-    height: auto;
-    max-height: 220px; /* Iets meer hoogte voor een modernere uitstraling */
-    object-fit: cover;
-    border: 1px solid #e0e0e0; /* Subtiele rand om de afbeelding */
-    border-radius: 16px; /* Grotere radius voor een elegantere look */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtiele schaduw voor diepte */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animatie voor hover-effect */
-  }  
-  /* tekst */
-  .kolom-titel {
-    font-size: 1.3rem;
-    margin: 10px 0;
-    color: black;
-  }
-  
-  .kolom-tekst {
+}
+
+.kolom img {
+  width: 100%;
+  height: auto;
+  max-height: 220px; /* Iets meer hoogte voor een modernere uitstraling */
+  object-fit: cover;
+  border-radius: 16px; /* Grotere radius voor een elegantere look */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtiele schaduw voor diepte */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animatie voor hover-effect */
+}
+/* tekst */
+.kolom-titel {
+  font-size: 1.3rem;
+  margin: 10px 0;
+  color: black;
+}
+
+.kolom-tekst {
   font-size: 1rem;
   color: black;
-  }
+}
 
-
-  
-  .faq-items {
+.faq-items {
   max-width: 800px;
   margin: 0 auto;
-  }
-  
-  .faq-item {
+}
+
+.faq-item {
   border-bottom: 1px solid #e0e0e0;
   padding: 30px 0;
-  }
-  
-  .faq-vraag {
+}
+
+.faq-vraag {
   background: none;
   border: none;
   padding: 0;
@@ -677,54 +737,57 @@ h2 {
   align-items: center;
   transition: color 0.2s ease;
   cursor: pointer;
-  }
-  .faq-vraag:hover {
+}
+.faq-vraag:hover {
   color: #c8a97e;
-  }
-  
-  .faq-item.open .faq-vraag {
+}
+
+.faq-item.open .faq-vraag {
   color: #c8a97e;
-  }
-  
-  .faq-vraag .icoon {
+}
+
+.faq-vraag .icoon {
   font-size: 1.5rem;
   color: #c8a97e;
   transition: transform 0.3s ease;
-  }
-  
-  .faq-item.open .faq-vraag .icoon {
+}
+
+.faq-item.open .faq-vraag .icoon {
   transform: rotate(45deg);
-  }
-  
-  .faq-antwoord {
+}
+
+.faq-antwoord {
   display: none;
   padding-top: 10px;
   animation: fadeIn 0.3s ease;
   color: #444;
   margin: 10px 0 0;
   padding: 0;
-    }
+}
 
-  .faq-item:last-child {
-    margin-bottom: 0;
-    border-bottom: none;
-    }
-    
-  
-  .faq-item.open .faq-antwoord {
+.faq-item:last-child {
+  margin-bottom: 0;
+  border-bottom: none;
+}
+
+.faq-item.open .faq-antwoord {
   display: block;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
   }
-  
-  @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  to {
+    opacity: 1;
   }
-  
-  .main--bg-dark .faq-vraag {
-  color: #fff !important;
-  }
-  
-  .faq-titel,
+}
+
+.main--bg-dark .faq-vraag {
+  color: #f9f6f2 !important;
+}
+
+.faq-titel,
 .faq-subtitel {
   text-align: center;
   max-width: 700px;
@@ -732,200 +795,173 @@ h2 {
   margin-right: auto;
 }
 
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
   }
-  .contactblok__wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 50px;
-    align-items: flex-start;
-    min-height: 0; /* of: hoogte afhankelijk van je content */
-
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  .contactblok__tekst {
-    flex: 1 1 40%;
-    position: sticky;
-    top: 80px;
-    align-self: flex-start;
-    height: 100%;
-
-  }
-    
-
-  .contactblok__wrapper,
-.container,
-main {
-  overflow: visible;
+}
+.contactblok__wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 50px;
+  align-items: flex-start;
+  min-height: 0; /* of: hoogte afhankelijk van je content */
 }
 
-  
-  .contactblok__formwrap {
-    display: flex;
-    align-items: flex-start;
-    width: 100%;
-    gap: 50px;
-  }
-  .contactblok__form {
-    flex: 1 1 55%;
-    background: #967f60;
-    padding: 32px;
-    border-radius: 16px;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
-    width: 100%;
-  }
-  
-  .form-table {
-    width: 100%;
-    border-spacing: 0;
-    border-collapse: collapse;
-  
-  }
-  
-  .form-table td {
-    padding: 0;
-    vertical-align: top;
+.contactblok__tekst {
+  flex: 1 1 40%;
+  align-self: flex-start;
+  height: auto;
+}
 
-  }
+.contactblok__formwrap {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  gap: 50px;
+}
+.contactblok__form {
+  flex: 1 1 55%;
+  background: #967f60;
+  padding: 32px;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+  width: 100%;
+}
 
-  .form-table tr > td {
-    padding-bottom: 25px;
-  }
-  
+.form-table {
+  width: 100%;
+  border-spacing: 0;
+  border-collapse: collapse;
+}
 
-  /* Horizontale ruimte tussen kolommen */
+.form-table td {
+  padding: 0;
+  vertical-align: top;
+}
+
+.form-table tr > td {
+  padding-bottom: 25px;
+}
+
+/* Horizontale ruimte tussen kolommen */
 .form-table td:first-child {
-    padding-right: 20px;
-  }
-  
-  
-  .form-heading {
-    font-size: 1.8rem;
-    font-weight: 600;
-    color: white;
-    margin-bottom: 2rem;
-    text-align: left;
-  }  
-  
-  .form-table input,
-  .form-row textarea.form-input {
-    position: relative;
-    width: 100%;
-    padding: 18px 14px 6px;
-    font-size: 1rem;
-    border: none;
-    border-bottom: 2px solid #ccc;
-    background: transparent;
-    font-family: 'marope', sans-serif;
-    box-sizing: border-box;
-    transition: border-color 0.3s;
-    color: white;
-  }
+  padding-right: 20px;
+}
 
-  .form-row textarea.form-input {
-    min-height: 100px; /* of bijv. 100px */
-  }
-  
-  
-  .form-table input::placeholder,
-  .form-row textarea.form-input::placeholder {
-    color: white;
-    opacity: 1;
-    transition: transform 0.2s ease, font-size 0.2s ease;
-    transform-origin: 0 0;
-    position: relative;
-    z-index: 1;
-  }
-    
-  .form-table input:focus::placeholder,
-  .form-row textarea.form-input:focus::placeholder {
-    transform: translateY(-18px) scale(0.85);
-    font-size: 1rem;
-    opacity: 0.8;
-  }
+.form-heading {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 2rem;
+  text-align: left;
+}
 
-  .form-table input:focus,
+.form-table input,
+.form-row textarea.form-input {
+  position: relative;
+  width: 100%;
+  padding: 18px 14px 6px;
+  font-size: 1rem;
+  border: none;
+  border-bottom: 2px solid #ccc;
+  background: transparent;
+  font-family: "marope", sans-serif;
+  box-sizing: border-box;
+  transition: border-color 0.3s;
+  color: white;
+}
+
+.form-row textarea.form-input {
+  min-height: 100px; /* of bijv. 100px */
+}
+
+.form-table input::placeholder,
+.form-row textarea.form-input::placeholder {
+  color: white;
+  opacity: 1;
+  transition: transform 0.2s ease, font-size 0.2s ease;
+  transform-origin: 0 0;
+  position: relative;
+  z-index: 1;
+}
+
+.form-table input:focus::placeholder,
+.form-row textarea.form-input:focus::placeholder {
+  transform: translateY(-18px) scale(0.85);
+  font-size: 1rem;
+  opacity: 0.8;
+}
+
+.form-table input:focus,
 .form-row textarea.form-input:focus {
   outline: none; /* verwijdert die standaard klik-rand */
   border-color: white;
   box-shadow: none; /* voorkomt extra rand bij sommige browsers */
 }
-  
-  
-  /* Responsive stacking op mobiel */
-  @media (max-width: 768px) {
-    .form-table tr {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-  
-    .form-table td {
-      width: 100%;
-    }
+
+/* Responsive stacking op mobiel */
+@media (max-width: 768px) {
+  .form-table tr {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
   }
 
-  .form-label {
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: white;
-    font-family: 'marope', sans-serif;
+  .form-table td {
+    width: 100%;
   }
+}
 
-  form .btn {
-    font-family: 'marope', sans-serif;
-  }
+.form-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: white;
+  font-family: "marope", sans-serif;
+}
 
-  .wpcf7-response-output {
-    padding: 15px 20px;
-    margin-top: 20px;
-    border-radius: 6px;
-    font-size: 1rem;
-  }
-  
-  .wpcf7-mail-sent-ok {
-    background-color: #e0f7e9;
-    color: #2e7d32;
-    border: 1px solid #a5d6a7;
-  }
-  
-  .wpcf7-validation-errors,
-  .wpcf7-form.invalid .wpcf7-response-output {
-    background-color: #fdecea;
-    color: #c62828;
-    border: 1px solid #c62828;
-  }
-  
-  .wpcf7-not-valid-tip {
-    color: #ff8989;
-    font-size: 1rem;
-    font-weight: 500;
-  }
+form .btn {
+  font-family: "marope", sans-serif;
+}
 
-  .site-footer {
-    background-color: #222; /* Donker achtergrondkleur */
-    color: #fff;
-    padding-top: 100px;
-    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
-    background-size: 10px 10px; /* Pas de grootte van de stippen aan */
-    padding-bottom: 0!important;
-  }
+.wpcf7 .wpcf7-spinner {
+  display: none !important;
+}
+
+
+.wpcf7-response-output {
+  margin-top: 20px;
+  border-radius: 6px;
+  font-size: 1rem;
+  color: #FFF;
+  border: none;
+}
+
+.site-footer {
+  background-color: #2e2e2e; /* Donker achtergrondkleur */
+  color: #f9f6f2;
+  padding-top: 75px;
+  background-image: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.1) 1px,
+    transparent 1px
+  );
+  background-size: 10px 10px; /* Pas de grootte van de stippen aan */
+  padding-bottom: 0 !important;
+}
 
 .footer-content {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
 }
-  
+
 .footer-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -934,25 +970,23 @@ main {
   width: 100%;
   max-width: none;
 }
-  
-  .footer-column {
-    width: 100%;
-  }
 
-    
+.footer-column {
+  width: 100%;
+}
+
 .footer-column ul li {
   margin-bottom: 0.75rem; /* pas aan naar wens */
 }
 
-
 .footer-column ul {
-    list-style: none;
-    padding: 0;
+  list-style: none;
+  padding: 0;
 }
 
 .footer-menu a {
-    color: #fff;
-    text-decoration: none;
+  color: #f9f6f2;
+  text-decoration: none;
 }
 
 .footer-menu a:hover,
@@ -963,7 +997,7 @@ main {
 
 .footer-menu a::after,
 .footer-column a:not(.custom-logo-link)::after {
-  content: '';
+  content: "";
   position: absolute;
   left: 0;
   bottom: -1px;
@@ -979,43 +1013,66 @@ main {
 }
 
 .footer-column h4 {
-    color: #ffffff; /* of jouw gewenste kleur */
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
+  color: #f9f6f2; /* of jouw gewenste kleur */
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .footer-column a {
-    color: White;
-    font-size: 1rem;
-    font-weight: inherit;
+  color: White;
+  font-size: 1rem;
+  font-weight: inherit;
 }
-
 
 .onderfooter {
-    text-align: center;
-    padding: 10px 0;
-    font-size: 0.875rem;
-    border-top: 1px solid rgba(255,255,255,0.2);
+  font-size: 0.875rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 10px 4rem;
 }
 
-.onderfooter span {
-    display: inline-block;
-    padding-right: 10px;
+.onderfooter-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%; /* houdt zich aan container-wide */
 }
 
+.onderfooter-left span {
+  display: inline-block;
+  margin-right: 15px;
+}
+
+.onderfooter-right span {
+  display: inline-block;
+}
+
+.onderfooter a {
+  color: #f9f6f2;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.onderfooter a:hover {
+  text-decoration: underline;
+}
+
+.onderfooter-left span:first-child {
+  color: #ccc;
+}
 
 .footer-column .custom-logo {
-    display: block;
-    max-height: 25px; /* pas aan naar wens */
-    width: auto;
-    object-fit: contain;
-    margin-bottom: 3rem;
-    margin-top: 3rem;
+  display: block;
+  max-height: 25px; /* pas aan naar wens */
+  width: auto;
+  object-fit: contain;
+  margin-bottom: 3rem;
+  margin-top: 3rem;
 }
 
 .footer-column i {
-    margin-right: 0.5rem;
-    color: #fff; /* of je gewenste kleur */
+  margin-right: 0.5rem;
+  color: #f9f6f2; /* of je gewenste kleur */
 }
 
 .single-post__wrapper {
@@ -1027,159 +1084,107 @@ main {
   padding: 50px 0;
 }
 
-/* 🔹 Hero op blogpost (zelfde als hero, maar met lagere hoogte en links uitgelijnd) */
-.hero.post-hero {
-    position: relative;
-    width: 100%;
-    height: 70vh; /* Iets minder hoog dan homepage hero */
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    overflow: hidden;
-    padding: 0;
-}
-
-/* Achtergrondbeeld met kenburns effect (optioneel uitzetten hier) */
-.hero.post-hero .hero-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    z-index: -1;
-    animation: none !important;
-}
-
-/* Donkere overlay */
-.hero.post-hero .hero-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.633); /* Donkerdere overlay */
-    z-index: 1;
-    pointer-events: none;
-}
-
-/* Inhoud binnen container */
-.hero.post-hero .container {
-    position: relative;
-    z-index: 2;
-    height: 100%;
-    display: flex;
-    align-items: flex-end;
-    padding: 0;
-}
-
-/* Hero content (titel) links uitgelijnd */
-.hero-content--left h1 {
+.hero.post-hero .hero-content--left h1 {
   text-align: left;
-  margin-left: 0;
-  padding: 0;
+  color: white;
+  font-family: "Playfair Display", serif;
+  font-weight: 700;
+  line-height: 1.2;
+  max-width: 100%;
+  font-size: clamp(2.2rem, 4vw, 3rem); /* desktop */
 }
 
+@media (max-width: 600px) {
+  .hero.post-hero .hero-content--left h1 {
+    font-size: clamp(1.2rem, 6vw, 1.5rem); /* mobiel */
+	  padding: 0;
+  }
+}
 @media screen and (min-width: 783px) {
-    body.admin-bar .site-header {
-        top: 32px;
-    }
+  body.admin-bar .site-header {
+    top: 32px;
+  }
 }
 
-
-.hero-content--left h1 {
-    color: white;
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    font-family: 'Playfair Display', serif;
-    font-weight: 700;
-    margin-bottom: 30px;
-    line-height: 1.2;
-}
 
 .hero-content--left .post-date {
-    color: rgba(255,255,255,0.7);
-    font-size: 1rem;
-    margin-top: 10px;
-    text-align: left;
-    margin-left: 0;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1rem;
+  margin-top: 10px;
+  text-align: left;
+  margin-left: 0;
 }
 
-
 .sidebar-cards {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: grid;
-    gap: 20px;
-  }
-  
-  
-  .sidebar-card {
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 14px rgba(0,0,0,0.05);
-    overflow: hidden;
-    transition: transform 0.2s ease, box-shadow 0.2s ease-in-out;
-    text-decoration: none;
-    border: 1px solid #e0e0e0;
-  }
-  
-  .sidebar-card:hover {
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-  }
-  
-  .sidebar-card a {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    gap: 15px;
-    padding: 15px;
-    color: #000;
-  }
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 20px;
+}
 
-  .sidebar-card a:hover {
-    text-decoration: none;
-  }
-  
-  .sidebar-card__thumb img {
-    width: 60px;
-    height: 60px;
-    object-fit: cover;
-    border-radius: 6px;
-    flex-shrink: 0;
-  }
-  
-  .sidebar-card__title {
-    font-size: 1rem;
-    font-weight: 600;
-    line-height: 1.4;
-    color: #333;
-    text-decoration: none;
-  }
+.sidebar-card {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease-in-out;
+  text-decoration: none;
+  border: 1px solid #e0e0e0;
+}
 
-  .sidebar-card__date {
-    font-size: 0.85rem;
-    color: #888;
-    margin-top: 4px;
-  }
-  
-  
-  .single-post__sidebar {
-    position: sticky;
-    top: 100px; /* afstand vanaf bovenkant bij scroll */
-    align-self: flex-start;
-    height: fit-content;
+.sidebar-card:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar-card a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  gap: 15px;
+  padding: 15px;
+  color: #000;
+}
+
+.sidebar-card a:hover {
+  text-decoration: none;
+}
+
+.sidebar-card__thumb img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.sidebar-card__title {
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: #333;
+  text-decoration: none;
+}
+
+.sidebar-card__date {
+  font-size: 0.85rem;
+  color: #888;
+  margin-top: 4px;
+}
+
+.single-post__sidebar {
+  position: sticky;
+  top: 120px; /* afstand vanaf bovenkant bij scroll */
+  align-self: flex-start;
+  height: fit-content;
 }
 
 .single-post__sidebar h2 {
-    font-size: 1.8rem;
-    margin-bottom: 20px;
-    color: #000;
-    font-weight: 600;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  color: #000;
+  font-weight: 600;
 }
-   
 
 .sidebar-card__title,
 .sidebar-card__date {
@@ -1187,79 +1192,76 @@ main {
 }
 
 .blog-archive {
-    padding: 100px 0;
-  }
-  
-  .archive-title {
-    font-size: clamp(2rem, 4vw, 3rem);
-    text-align: center;
-    margin-bottom: 60px;
-  }
-  
-  .blog-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 40px;
-  }
+  padding: 100px 0;
+}
 
-  .blog-card__date {
-    font-size: 0.8rem;
-    margin-top: 8px;
-    font-weight: 300;
-  }
-  
-  
-  .blog-card {
-    background: #967f601f;
-    border-radius: 12px;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.05);
-    overflow: hidden;
-    transition: background 0.2s ease, transform 0.2s ease;
-  }
-  
-  .blog-card:hover {
-    transform: translateY(-4px);
-    background: #967f602e;
-  }
+.archive-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  text-align: center;
+  margin-bottom: 60px;
+}
 
- .blog-card a:hover {
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 40px;
+}
+
+.blog-card__date {
+  font-size: 0.8rem;
+  margin-top: 8px;
+  font-weight: 300;
+}
+
+.blog-card {
+  background: #967f601f;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.blog-card:hover {
+  transform: translateY(-4px);
+  background: #967f602e;
+}
+
+.blog-card a:hover {
   text-decoration: none;
- }
+}
 
- .blog-card__excerpt {
+.blog-card__excerpt {
   margin: 12px 0;
   font-size: 14px;
   font-weight: 400;
 }
 
-  
-  .blog-card a {
-    text-decoration: none;
-    color: inherit;
-    display: block;
-    height: 100%;
-  }
-  
-  .blog-card__thumb img {
-    width: 100%;
-    height:150px;
-    object-fit: cover;
-    display: block;
-  }
-  
-  .blog-card__content {
-    padding: 20px;
-  }
-  
-  .blog-card__content h2 {
-    font-size: 1.2rem;
-    margin: 0;
-    font-family: 'Playfair Display', serif;
-  }
-  
+.blog-card a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  height: 100%;
+}
+
+.blog-card__thumb img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  display: block;
+}
+
+.blog-card__content {
+  padding: 20px;
+}
+
+.blog-card__content h2 {
+  font-size: 1.2rem;
+  margin: 0;
+  font-family: "Playfair Display", serif;
+}
 
 .blog-archive .archive-title {
-    padding-top: 75px;
+  padding-top: 75px;
 }
 
 .masonry {
@@ -1276,11 +1278,11 @@ main {
   cursor: grab;
 
   /* scrollbars verbergen */
-  scrollbar-width: none;          /* Firefox */
-  -ms-overflow-style: none;       /* IE/Edge */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
 }
 .masonry::-webkit-scrollbar {
-  display: none;                  /* Chrome, Safari */
+  display: none; /* Chrome, Safari */
 }
 
 .masonry-item {
@@ -1304,10 +1306,10 @@ main {
   transform: translateY(-50%);
   background: white;
   border: none;
-  font-size: 1.25rem;         /* kleiner */
+  font-size: 1.25rem; /* kleiner */
   cursor: pointer;
   padding: 0.5rem;
-  border-radius: 50%;         /* volledig rond */
+  border-radius: 50%; /* volledig rond */
   z-index: 10;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   transition: background 0.3s ease, transform 0.2s ease;
@@ -1330,8 +1332,14 @@ main {
 .masonry-arrow.right {
   right: 0.5rem;
 }
+.masonry-arrow.desktop-only {
+  display: flex;
+}
+
 @media (max-width: 768px) {
-  .desktop-only { display: none; }
+  .masonry-arrow.desktop-only {
+    display: none !important;
+  }
 }
 
 /* Fade-in animatie */
@@ -1358,7 +1366,7 @@ main {
 }
 
 .main--bg-dark .gallery-navigation .dot {
-  background-color: #fff;
+  background-color: #f9f6f2;
 }
 
 .gallery-navigation .dot {
@@ -1375,7 +1383,6 @@ main {
   background-color: #000;
   opacity: 1;
 }
-
 
 .fourofour {
   padding: 120px 0;
@@ -1413,10 +1420,9 @@ body.force-scrolled-header .site-header {
 }
 
 body.force-scrolled-header .site-header .header-button .btn {
-  background-color: #fff;
+  background-color: #f9f6f2;
   color: #222;
 }
-
 
 .tekst-tabel-blok {
   padding: 4rem 0;
@@ -1464,11 +1470,12 @@ body.force-scrolled-header .site-header .header-button .btn {
 
   &.main--bg-dark {
     .tabel table thead {
-      background-color: white;
+      background-color: #f9f6f2;
       color: #000;
     }
   }
 }
+
 
 .tekst-tabel-blok .tabel {
   overflow-x: auto;
@@ -1495,4 +1502,450 @@ body.force-scrolled-header .site-header .header-button .btn {
 
 .tekst-tabel-blok .tabel tbody tr:last-child td:last-child {
   border-bottom-right-radius: 16px;
+}
+
+.prijs-calculator-wrapper {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  border: none;
+  background-color: #c8a97e;
+  border-radius: 16px;
+  box-shadow: 0px 0px 31px 0px rgba(0, 0, 0, 0.1);
+}
+
+.prijs-calculator .tekst {
+  flex: 0 0 70%;
+  padding: 2rem;
+}
+
+.prijs-calculator .prijs-wrap {
+  flex: 0 0 30%;
+  display: flex;
+  align-items: stretch;
+}
+
+.prijs-calculator .form-wrap {
+  position: relative;
+  min-height: 100%; /* zorgt dat stappen elkaar niet overlappen */
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+}
+
+.sectie-ondertitel {
+  margin-bottom: 0; /* of max 1rem als je iets ruimte wilt */
+}
+
+.indeling-options {
+  display: flex;
+  gap: 2rem;
+  width: 100%;
+}
+
+.indeling-option input {
+  display: none;
+}
+
+.indeling-option {
+  flex: 1;
+  max-width: 100%;
+  cursor: pointer;
+  border: 2px solid #ccc;
+  border-radius: 12px;
+  padding: 12px;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  position: relative;
+}
+
+.indeling-option img {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+}
+
+.indeling-option input[type="radio"]:checked ~ * {
+  background-color: #f8f5f0;
+  border: 2px solid black;
+}
+
+/* ✅ Radio onzichtbaar maken bij stap 1 */
+.stap[data-step="1"] .indeling-option input[type="radio"] {
+  display: none;
+}
+
+
+/* ✅ Label boven elke afbeelding */
+.indeling-labels {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 0.5rem;
+}
+
+.indeling-labels span {
+  font-weight: 600;
+  color: #333;
+  text-align: left;
+}
+
+.prijs-calculator .stap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  opacity: 0;
+  transform: translateX(20px);
+  transition: none;
+  pointer-events: none;
+  animation: none;
+  overflow: hidden;
+}
+
+.prijs-calculator .stap.active {
+  position: relative;
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: auto;
+  animation: fadeSlideIn 0.5s ease-out forwards;
+}
+
+@keyframes fadeSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.prijs-calculator .opties-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.prijs-calculator label {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1rem;
+  color: #444;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  background: #f9f6f2;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.prijs-calculator label:hover {
+  border-color: #999;
+  background: #f9f9f9;
+}
+
+.prijs-calculator label.checked {
+  background-color: #f8f5f0;
+  color: #444;
+  border-color: #f8f5f0;
+}
+
+.prijs-calculator input[type="radio"],
+.prijs-calculator input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 1.2rem;
+  height: 1.2rem;
+  border: 2px solid #c8a97e;
+  border-radius: 4px;
+  background-color: #f9f6f2;
+  cursor: pointer;
+  margin-right: 0.75rem;
+  display: inline-block;
+  position: relative;
+  transition: background-color 0.2s, border-color 0.2s;
+  margin-top: 0.2rem;
+  flex-shrink: 0;
+}
+
+/* Geselecteerd gedrag */
+.prijs-calculator input[type="radio"]:checked,
+.prijs-calculator input[type="checkbox"]:checked {
+  background-color: #c8a97e;
+  border-color: #c8a97e;
+}
+
+.prijs-calculator input[type="radio"]:checked::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 5px;
+  width: 4px;
+  height: 8px;
+  border: solid #f9f6f2;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+/* Checkbox checkmark */
+.prijs-calculator input[type="checkbox"]:checked::after {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 1px;
+  width: 6px;
+  height: 10px;
+  border: solid #f9f6f2;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.prijs-calculator h2 {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  font-family: poppins, sans-serif;
+  font-weight: 600;
+  color: #f9f6f2;
+}
+
+.prijs-calculator input[type="number"]:focus {
+  outline: none;
+  border-color: #c8a97e;
+}
+
+.prijs-output {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  background-color: #f8f5f0;
+  padding: 2rem;
+  text-align: center;
+  border-radius: 0 16px 16px 0;
+  gap: 1rem;
+}
+
+.prijs-output #prijs {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #000;
+}
+
+.prijs-toelichting {
+  font-size: 0.95rem;
+  color: #333;
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 8px;
+  border-left: 4px solid #c8a97e;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  max-width: 100%;
+  text-align: left;
+}
+
+.stap-divider {
+  border: none;
+  border-top: 2px solid rgba(0, 0, 0, 0.1);
+  margin: 1rem 0 2rem;
+}
+
+.stap-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+button.btn-actie,
+input[type="submit"].btn-actie {
+  all: unset; /* reset alle btn styles */
+  display: inline-block;
+  background-color: #000;
+  color: #f9f6f2;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: background 0.3s ease;
+}
+
+button.btn-actie:hover,
+input[type="submit"].btn-actie:hover {
+  background-color: #444;
+}
+
+/* Donkere modus */
+.main--bg-dark button.btn-actie,
+.main--bg-dark input[type="submit"].btn-actie {
+  background-color: #f9f6f2;
+  color: #000;
+}
+
+.main--bg-dark button.btn-actie:hover,
+.main--bg-dark input[type="submit"].btn-actie:hover {
+  background-color: #e0e0e0;
+}
+.btn-actie .arrow {
+  margin: 0 0.5rem;
+}
+
+.form-step-wrap {
+  position: relative;
+  overflow-x: hidden;
+}
+
+  .opties-grid label {
+    flex: 1 1 45%;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #333;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .opties-grid label input {
+    transform: scale(1.2);
+  }
+
+  
+  .stappen-progress {
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.progress-track {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background-color: #e0e0e0; /* onvoltooide lijn */
+  transform: translateY(-50%);
+  border-radius: 4px;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.progress-bar.completed {
+  height: 4px;
+  background-color: #d4c0a3; /* goudkleur */
+  width: 0%;
+  transition: width 0.3s ease;
+  border-radius: 4px;
+  z-index: 1;
+}
+
+.progress-bar {
+  height: 4px;
+  background-color: #c8a97e;
+  width: 0%;
+  transition: width 0.3s ease;
+  border-radius: 4px;
+  z-index: 1;
+}
+
+.progress-steps {
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  position: relative;
+  z-index: 2;
+}
+
+.progress-steps li {
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  background-color: #ddd;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 50%;
+  position: relative;
+  z-index: 3;
+  transition: all 0.3s ease;
+}
+
+.progress-steps li.active {
+  background-color: #000;
+  color: #fff;
+}
+
+.progress-steps li.completed {
+  background-color: #c8a97e; /* goudkleur */
+  color: transparent;
+}
+
+.progress-steps li.completed::after {
+  content: '✓';
+  color: #fff;
+  font-size: 0.9rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Offerte aanvraag pagina opmaak */
+.offerte-aanvraag {
+  padding: 8rem 0;
+  background-color: #2e2e2e;
+}
+
+
+.offerte-aanvraag h1,
+.offerte-aanvraag h2,
+.offerte-aanvraag h3 {
+  color: #333;
+  text-align: left;
+  margin-bottom: 2rem;
+}
+
+.offerte-aanvraag .form-heading {
+  font-size: 2rem;
+  margin: 0;
+  color: #ffffff;
+  margin-bottom: 1rem;
+}
+
+.offerte-aanvraag h1 {
+  display: none;
+}
+
+
+@media (min-width: 769px) {
+  .offerte-aanvraag .offerte-keuzes {
+    flex: 0 0 40%;
+    max-width: 40%;
+  }
+
+  .offerte-aanvraag .contactblok__form {
+    flex: 0 0 60%;
+    max-width: 60%;
+  }
 }

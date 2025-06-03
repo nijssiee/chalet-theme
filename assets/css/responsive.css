@@ -7,10 +7,52 @@
 
 
     [id] {
-      scroll-margin-top: 120px; /* pas aan op basis van je mobiele header hoogte */
+      scroll-margin-top: 80px; /* consistent value for mobile header height */
     }
+
+    .container-wide {
+  width: 100%;
+  padding-left: 30px;
+  padding-right: 30px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
   }
+
+@media (max-width: 768px) {
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    /* Gebruik background-image ipv <img> op mobiel */
+    background-image: url('/pad/naar/jouw/afbeelding.jpg'); /* Dynamisch in PHP */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  .hero-bg img {
+    display: none !important;
+  }
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+  }
+}
+
   
+@media (max-width: 768px) {
+  .site-header.transparent .custom-logo {
+    filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.5));
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+  }
+}
+
 
 @media (max-width: 768px) {
     .site-footer .container {
@@ -19,7 +61,7 @@
     }
 
     .site-header .logo img {
-        max-height: 20px;
+        max-height: 25px;
         height: auto;
         width: auto;
     }
@@ -72,22 +114,25 @@
 }
 
 @media (max-width: 768px) {
-  [id] {
-    scroll-margin-top: 80px; /* pas aan op basis van je mobiele header hoogte */
-  }
+  /* Removed duplicate [id] selector */
 }
 
 
 @media (max-width: 768px) {
-    .hero {
-        height: auto;
-        min-height: 85vh;
-        padding: 50px 20px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-    }
+  .hero {
+    height: 95vh !important;
+    overflow: hidden !important;
+    padding: 50px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero-content {
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
 
     .hero-content {
         max-width: 90%;
@@ -102,6 +147,15 @@
         font-size: 1.1rem;
     }
 }
+
+@media (max-width: 768px) {
+  .hero-bg {
+    animation: none !important;
+    transform: none !important;
+    will-change: auto !important;
+  }
+}
+
 
 @media (max-width: 768px) {
     .tekst-afbeelding {
@@ -181,7 +235,6 @@
 @media (max-width: 600px) {
     .faq-vraag {
       color: black;
-      background-color: white;
     }
   }
   
@@ -379,6 +432,19 @@
   
 }
 
+@media (max-width: 768px) {
+  .stap-buttons .btn-actie {
+    font-size: 0.9rem;
+    padding: 0.6rem 1.2rem;
+  }
+}
+@media (max-width: 768px) {
+  .prijs-calculator {
+    overflow-x: hidden;
+  }
+}
+
+
 
 
 @media (max-width: 768px) {
@@ -396,26 +462,35 @@
     text-align: left;
 	  max-height: 35px;
   }
-
-  .onderfooter-flex {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.5rem;
-    padding: 30px;
-  }
-
-  .onderfooter {
-    text-align: center;
-    margin-top: 50px;
-  
-  }
 }
-
 @media (max-width: 768px) {
   .footer-logo {
     display: none;
   }
 }
+
+@media (max-width: 768px) {
+  .onderfooter-flex {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    gap: 1rem;
+    padding: 10px 0;
+  }
+
+  .onderfooter-left,
+  .onderfooter-right {
+    width: 100%;
+  }
+
+    .onderfooter-left {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+}
+
 
 .site-footer {
   padding-bottom: 1rem; /* of bijvoorbeeld 4rem als je meer wilt */
@@ -431,7 +506,12 @@
     max-width: 100vw;
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
-    scroll-snap-type: x mandatory;
+  }
+
+  @supports (scroll-snap-type: x mandatory) {
+    .masonry {
+      scroll-snap-type: x mandatory;
+    }
   }
 
   .masonry-item {
@@ -457,9 +537,133 @@
   .mobile-only {
     display: none;
   }
-
-  .masonry-arrow {
-    display: none;
-  }
   
 }
+
+@media (max-width: 768px) {
+  .prijs-output {
+    border-radius: 16px;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .prijs-output #prijs {
+    padding: 2rem 1rem;
+    font-size: 22px;
+  }
+
+  .prijs-toelichting {
+    border-radius: 0;
+    border-left: none;
+    border-top: 1px solid #e6e6e6;
+    margin: 0;
+  }
+
+  .prijs-calculator-wrapper {
+    flex-direction: column;
+  }
+
+  .prijs-calculator .tekst,
+  .prijs-calculator .prijs-wrap {
+    flex: 1 1 100%;
+    max-width: 100%;
+    padding: 1.5rem;
+  }
+
+  .prijs-wrap {
+    border-left: none;
+  }
+}
+@media (max-width: 768px) {
+  .stap-buttons .btn-actie {
+    font-size: 0.9rem;
+    padding: 0.6rem 1.2rem;
+  }
+}
+@media (max-width: 768px) {
+  .prijs-calculator {
+    overflow-x: hidden;
+  }
+}
+@media (max-width: 768px) {
+  .prijs-calculator label {
+    padding: 0.75rem;
+    font-size: 0.95rem;
+  }
+
+    @media (max-width: 768px) {
+  .indeling-options {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+}
+    @media (max-width: 768px) {
+      .prijs-calculator .opties-grid {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  }
+@media (max-width: 600px) {
+  #download-pdf {
+    font-size: 0.875rem;
+    padding: 0.5rem 1rem;
+    margin: 0 0 20px 20px;
+  }
+
+  #download-pdf .material-icons-outlined {
+    font-size: 16px;
+  }
+
+  #download-pdf span {
+    font-size: 0.875rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .prijs-output {
+    gap: 0; /* of gebruik margin-bottom als je geen flex/gap gebruikt */
+  }
+
+  .prijs-output > * {
+    margin-bottom: 0.75rem;
+  }
+
+  .prijs-output .prijs-toelichting {
+    font-size: 0.95rem;
+    line-height: 1.4;
+  }
+
+  #download-pdf-wrapper {
+    margin-top: 0;
+  }
+  #prijs {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .offerte-aanvraag .container {
+    flex-direction: column;
+  }
+
+  .offerte-aanvraag .contactblok__form {
+    order: 1;
+  }
+
+  .offerte-aanvraag .offerte-keuzes {
+    order: 2;
+  }
+}
+
+.post-navigation a {
+  text-decoration: none;
+  color: #000;
+  font-weight: bold;
+}
+
+.post-navigation a:hover {
+  text-decoration: underline;
+}
+

@@ -18,6 +18,17 @@
     padding: 0 !important;
 }
 
+.main--padding-top-half {
+    padding-top: 60px !important;
+    padding-bottom: 100px !important;
+}
+
+.main--padding-bottom-half {
+    padding-top: 100px !important;
+    padding-bottom: 60px !important;
+}
+
+
 @media (max-width: 1024px) {
     .main--padding-both {
         padding-top: 40px !important;
@@ -33,18 +44,28 @@
         padding-top: 0 !important;
         padding-bottom: 40px !important;
     }
+	    .main--padding-top-half {
+        padding-top: 40px !important;
+        padding-bottom: 40px !important;
+    }
+
+    .main--padding-bottom-half {
+        padding-top: 40px !important;
+        padding-bottom: 40px !important;
+    }
+
 }
 
 
 /* 🔹 ACHTERGRONDKLEUREN EN TEKSTKLEUREN */
 .main--bg-white {
-    background-color: #ffffff !important;
-    color: #111 !important;
+    background-color: #f9f6f2 !important;
+    color: #2e2e2e !important;
 }
 
 .main--bg-dark {
-    background-color: #222 !important;
-    color: #ffffff !important;
+    background-color: #2e2e2e !important;
+    color: #f9f6f2 !important;
 }
 
 /* H2, H3 en p wit maken in donkere secties */
@@ -56,30 +77,30 @@
 .main--bg-dark h6,
 .main--bg-dark p,
 .main--bg-dark li {
-    color: #ffffff !important;
+    color: #f9f6f2  !important;
 }
 
 
 /* Hover effect */
 .btn:hover {
     background: #c8a97e; /* Lichte kleur bij hover */
-    color: white;
+    color: #f9f6f2;
 }
 
 /* 🔹 Knoppen op donkere achtergrond */
 .main--bg-dark .btn {
-    background: white;
-    color: black;
+    background: #f9f6f2;
+    color: #2e2e2e;
 }
 
 .main--bg-dark .btn:hover {
     background: #c8a97e;
-    color: white;
+    color: #f9f6f2;
 }
 
 /* 🔹 LINK KLEUREN */
 a {
-    color: #000000; /* Standaard link kleur */
+    color: #2e2e2e; /* Standaard link kleur */
     text-decoration: none;
     transition: 0.3s ease-in-out;
     font-weight: 600;
@@ -100,5 +121,5 @@ p {
 }
 
 .main--bg-dark p {
-    color: #ffffff !important;
+    color: #f9f6f2 !important;
 }

@@ -4,7 +4,23 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
+
 wp_enqueue_style( 'font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css' );
+add_image_size('hero_mobile', 900, 600, true); // naam, breedte, hoogte, crop
+
+add_action('wp_head', function() {
+    // Favicon alleen frontend
+    if (!is_admin()) {
+        echo '<link rel="icon" href="https://www.chaletlatenbouwen.nl/wp-content/uploads/2025/04/Ontwerp-zonder-titel-4.svg" type="image/svg+xml" sizes="any">';
+        echo '<link rel="apple-touch-icon" href="https://www.chaletlatenbouwen.nl/wp-content/uploads/2025/04/Ontwerp-zonder-titel-4.svg">';
+    }
+    // Hero achtergrond preload (indien variabele aanwezig)
+    global $hero_bg;
+    if (!empty($hero_bg)) {
+        echo '<link rel="preload" as="image" href="' . esc_url($hero_bg) . '" fetchpriority="high">';
+    }
+});
+
 
 // Thema setup
 function chalet_theme_setup() {
@@ -64,7 +80,7 @@ function chalet_enqueue_assets() {
     );
 
     // JavaScript
-    wp_enqueue_script('main-js', get_template_directory_uri() . '/assets/js/main.js', array(), '1.0', true);
+wp_enqueue_script('main-js', get_template_directory_uri() . '/assets/js/main.js', array(), filemtime(get_template_directory() . '/assets/js/main.js'), true);
 }
 add_action('wp_enqueue_scripts', 'chalet_enqueue_assets');
 
@@ -159,3 +175,100 @@ function auto_add_alt_text($metadata, $attachment_id) {
     return $metadata;
 }
 add_filter('wp_generate_attachment_metadata', 'auto_add_alt_text', 10, 2);
+
+function cf7_show_keuzes_shortcode() {
+  if ( isset($_GET['keuzedata']) ) {
+    return nl2br( esc_html( $_GET['keuzedata'] ) );
+  }
+  return '';
+}
+add_shortcode('keuzes', 'cf7_show_keuzes_shortcode');
+
+// Zorg dat shortcodes in CF7 mail worden verwerkt
+add_filter('wpcf7_mail_components', function($components, $contact_form, $mail_tag) {
+    foreach ($components as $key => $content) {
+        if (is_string($content)) {
+            $components[$key] = do_shortcode($content);
+        }
+    }
+    return $components;
+}, 10, 3);
+
+add_filter('wpcf7_mail_components', function($components, $form) {
+    if (isset($components['body'])) {
+        $components['body'] = wp_specialchars_decode($components['body'], ENT_QUOTES);
+    }
+    return $components;
+}, 10, 2);
+
+// Shortcode voor [keuzedata] in mail template
+add_shortcode('keuzedata', function() {
+    global $keuzedata_str;
+    // underscores vervangen door spaties
+    return str_replace('_', ' ', $keuzedata_str);
+});
+
+add_action('wp_footer', function () {
+  if (is_page('offerte-aanvraag')) { ?>
+    <script>
+      document.addEventListener('wpcf7mailsent', function (event) {
+        // Stuurt door naar bedankt-pagina met dezelfde query parameters
+        window.location.href = 'https://chaletverkopen.nl/bedankt-offerte/' + window.location.search;
+      }, false);
+    </script>
+<?php }
+});
+add_filter('get_custom_logo', function ($html) {
+  $style = 'transform: translateZ(0); will-change: transform; opacity:1;';
+
+  if (wp_is_mobile()) {
+    $style .= ' filter: drop-shadow(0 0 4px rgba(0,0,0,0.5));';
+  }
+
+  $html = str_replace(
+    '<img',
+    '<img decoding="async" fetchpriority="high" style="' . esc_attr($style) . '"',
+    $html
+  );
+
+  return $html;
+});
+
+add_filter('acf/load_field/name=formulier_shortcode', function ($field) {
+    $forms = get_posts([
+        'post_type'      => 'wpcf7_contact_form',
+        'posts_per_page' => -1,
+        'orderby'        => 'title',
+        'order'          => 'ASC'
+    ]);
+
+    $choices = [];
+
+    if ($forms) {
+        foreach ($forms as $form) {
+            $choices['[contact-form-7 id="' . $form->ID . '" title="' . $form->post_title . '"]'] = $form->post_title;
+        }
+    }
+
+    $field['choices'] = $choices;
+    return $field;
+});
+
+add_filter('wp_get_attachment_image_attributes', function($attr, $attachment) {
+    if (isset($attr['class']) && strpos($attr['class'], 'custom-logo') !== false) {
+        // Lazy loading uitschakelen
+        $attr['loading'] = 'eager';
+        // Preload prioriteit + visuele fix
+        $attr['decoding'] = 'async';
+        $attr['fetchpriority'] = 'high';
+        $attr['style'] = 'transform: translateZ(0); will-change: transform; opacity:1;';
+        // Drop-shadow enkel op mobiel
+        if (wp_is_mobile()) {
+            $attr['style'] .= ' filter: drop-shadow(0 0 4px rgba(0,0,0,0.5));';
+        }
+    }
+    return $attr;
+}, 10, 2);
+
+add_filter('acf_the_content', 'wpautop');
+add_filter('acf_the_content', 'shortcode_unautop');

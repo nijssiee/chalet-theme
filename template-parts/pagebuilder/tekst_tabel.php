@@ -7,15 +7,18 @@ $tabel = get_field($tabel_keuze, 'option'); // Laad tabel vanuit options page
 $ruimte = get_sub_field('ruimte') ?: '';
 $achtergrond = get_sub_field('achtergrond') ?: '';
 $blok_id = get_sub_field('blok_id') ?: '';
+
+// Check of kolom_3 gevuld is (op basis van eerste rij)
+$toon_kolom_3 = !empty($tabel[0]['kolom_3']);
 ?>
 
 <section id="<?php echo esc_attr($blok_id); ?>" class="tekst-tabel-blok <?php echo esc_attr($ruimte); ?> <?php echo esc_attr($achtergrond); ?>">
   <div class="container tekst-tabel-wrapper <?php echo $weergave === 'alleen_tabel' ? 'alleen-tabel' : ''; ?>">
     
     <?php if ($weergave === 'tekst_tabel' && $tekst): ?>
-      <div class="tekst">
-        <?php echo $tekst; ?>
-      </div>
+    <div class="tekst styled-lists">
+      <?php echo wpautop(do_shortcode($tekst)); ?>
+    </div>
     <?php endif; ?>
 
     <?php if ($tabel): ?>
@@ -25,7 +28,9 @@ $blok_id = get_sub_field('blok_id') ?: '';
             <tr>
               <th><?php echo esc_html($tabel[0]['kolom_1']); ?></th>
               <th><?php echo esc_html($tabel[0]['kolom_2']); ?></th>
-              <th><?php echo esc_html($tabel[0]['kolom_3']); ?></th>
+              <?php if ($toon_kolom_3): ?>
+                <th><?php echo esc_html($tabel[0]['kolom_3']); ?></th>
+              <?php endif; ?>
             </tr>
           </thead>
           <tbody>
@@ -33,7 +38,9 @@ $blok_id = get_sub_field('blok_id') ?: '';
               <tr>
                 <td><?php echo esc_html($rij['kolom_1']); ?></td>
                 <td><?php echo esc_html($rij['kolom_2']); ?></td>
-                <td><?php echo esc_html($rij['kolom_3']); ?></td>
+                <?php if ($toon_kolom_3): ?>
+                  <td><?php echo esc_html($rij['kolom_3']); ?></td>
+                <?php endif; ?>
               </tr>
             <?php endforeach; ?>
           </tbody>

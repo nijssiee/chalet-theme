@@ -24,32 +24,6 @@
                     "display": "block",
                     "sub_fields": [
                         {
-                            "key": "field_67b5e71ac72aa",
-                            "label": "Hero afbeelding",
-                            "name": "hero_image",
-                            "aria-label": "",
-                            "type": "image",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "return_format": "array",
-                            "library": "all",
-                            "min_width": "",
-                            "min_height": "",
-                            "min_size": "",
-                            "max_width": "",
-                            "max_height": "",
-                            "max_size": "",
-                            "mime_types": "",
-                            "allow_in_bindings": 0,
-                            "preview_size": "medium"
-                        },
-                        {
                             "key": "field_67b5e760c72ab",
                             "label": "Hero titel",
                             "name": "hero_title",
@@ -101,7 +75,7 @@
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
-                                "width": "50",
+                                "width": "33",
                                 "class": "",
                                 "id": ""
                             },
@@ -130,7 +104,7 @@
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
-                                "width": "50",
+                                "width": "33",
                                 "class": "",
                                 "id": ""
                             },
@@ -159,7 +133,7 @@
                                 ]
                             ],
                             "wrapper": {
-                                "width": "50",
+                                "width": "33",
                                 "class": "",
                                 "id": ""
                             },
@@ -188,7 +162,7 @@
                                 ]
                             ],
                             "wrapper": {
-                                "width": "50",
+                                "width": "33",
                                 "class": "",
                                 "id": ""
                             },
@@ -215,7 +189,7 @@
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
-                                "width": "",
+                                "width": "50",
                                 "class": "",
                                 "id": ""
                             },
@@ -230,27 +204,6 @@
                             "mime_types": "",
                             "allow_in_bindings": 0,
                             "preview_size": "medium"
-                        },
-                        {
-                            "key": "field_67b7302119a3a",
-                            "label": "Tekst",
-                            "name": "tekst",
-                            "aria-label": "",
-                            "type": "wysiwyg",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "allow_in_bindings": 0,
-                            "tabs": "all",
-                            "toolbar": "full",
-                            "media_upload": 1,
-                            "delay": 0
                         },
                         {
                             "key": "field_67b72fd519a39",
@@ -282,6 +235,27 @@
                             "save_options": 0
                         },
                         {
+                            "key": "field_67b7302119a3a",
+                            "label": "Tekst",
+                            "name": "tekst",
+                            "aria-label": "",
+                            "type": "wysiwyg",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "allow_in_bindings": 0,
+                            "tabs": "all",
+                            "toolbar": "full",
+                            "media_upload": 1,
+                            "delay": 0
+                        },
+                        {
                             "key": "field_67b7308519a3b",
                             "label": "Knop tekst",
                             "name": "knop_label",
@@ -309,6 +283,26 @@
                             "aria-label": "",
                             "type": "page_link",
                             "instructions": "",
+                            "required": false,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "post_type": [],
+                            "taxonomy": [],
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "allow_archives": 1
+                        },
+                        {
+                            "key": "field_683b5d00fab43",
+                            "label": "Knop anchor",
+                            "name": "knop_anchor",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
@@ -316,16 +310,12 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "post_type": [
-                                "page",
-                                "post"
-                            ],
-                            "post_status": "",
-                            "taxonomy": "",
-                            "allow_archives": 0,
-                            "multiple": 0,
-                            "allow_null": 1,
-                            "allow_in_bindings": 1
+                            "default_value": "",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
                         },
                         {
                             "key": "field_67b7309a19a3d",
@@ -496,6 +486,28 @@
                             "rows_per_page": 20,
                             "sub_fields": [
                                 {
+                                    "key": "field_67b84e9e63cfc",
+                                    "label": "Titel",
+                                    "name": "titel",
+                                    "aria-label": "",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "maxlength": "",
+                                    "allow_in_bindings": 0,
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": "",
+                                    "parent_repeater": "field_67b84ef063cff"
+                                },
+                                {
                                     "key": "field_67b84e9163cfb",
                                     "label": "Afbeelding",
                                     "name": "afbeelding",
@@ -519,7 +531,7 @@
                                     "max_size": "",
                                     "mime_types": "",
                                     "allow_in_bindings": 0,
-                                    "preview_size": "medium",
+                                    "preview_size": "thumbnail",
                                     "parent_repeater": "field_67b84ef063cff"
                                 },
                                 {
@@ -542,28 +554,6 @@
                                     "toolbar": "full",
                                     "media_upload": 1,
                                     "delay": 0,
-                                    "parent_repeater": "field_67b84ef063cff"
-                                },
-                                {
-                                    "key": "field_67b84e9e63cfc",
-                                    "label": "Titel",
-                                    "name": "titel",
-                                    "aria-label": "",
-                                    "type": "text",
-                                    "instructions": "",
-                                    "required": 0,
-                                    "conditional_logic": 0,
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "default_value": "",
-                                    "maxlength": "",
-                                    "allow_in_bindings": 0,
-                                    "placeholder": "",
-                                    "prepend": "",
-                                    "append": "",
                                     "parent_repeater": "field_67b84ef063cff"
                                 }
                             ]
@@ -735,6 +725,35 @@
                     "display": "block",
                     "sub_fields": [
                         {
+                            "key": "field_67ffb35426970",
+                            "label": "Formulier",
+                            "name": "formulier_shortcode",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "[contact-form-7 id=\"155\" title=\"Contactformulier\"]": "Contactformulier",
+                                "[contact-form-7 id=\"472\" title=\"Offerte formulier\"]": "Offerte formulier"
+                            },
+                            "default_value": false,
+                            "return_format": "value",
+                            "multiple": 0,
+                            "allow_null": 0,
+                            "allow_in_bindings": 0,
+                            "ui": 0,
+                            "ajax": 0,
+                            "placeholder": "",
+                            "create_options": 0,
+                            "save_options": 0
+                        },
+                        {
                             "key": "field_67ffb33f2696f",
                             "label": "Intro tekst",
                             "name": "intro_tekst",
@@ -754,27 +773,6 @@
                             "toolbar": "full",
                             "media_upload": 1,
                             "delay": 0
-                        },
-                        {
-                            "key": "field_67ffb35426970",
-                            "label": "Formulier shortcode",
-                            "name": "formulier_shortcode",
-                            "aria-label": "",
-                            "type": "text",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "[contact-form-7 id=\"9ec2fb7\" title=\"Contactformulier\"]",
-                            "maxlength": "",
-                            "allow_in_bindings": 0,
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": ""
                         },
                         {
                             "key": "field_67ffb35a26971",
@@ -977,6 +975,38 @@
                     ],
                     "min": "",
                     "max": ""
+                },
+                "layout_68238b2ec12c3": {
+                    "key": "layout_68238b2ec12c3",
+                    "name": "prijs_calculator",
+                    "label": "Prijs calculator",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_68238b63c12c6",
+                            "label": "Blokinstellingen",
+                            "name": "blokinstellingen",
+                            "aria-label": "",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_67b72f177a030"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
             },
             "min": "",
@@ -1002,5 +1032,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1747062800
+    "modified": 1748721369
 }

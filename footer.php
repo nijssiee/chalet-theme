@@ -102,15 +102,39 @@
     </div>
   </div>
 
-  <!-- Onderfooter -->
-  <div class="container-wide onderfooter">
-    <div class="onderfooter-flex">
-      <span>KVK: 12345678</span>
-      <span>BTW: NL001234567B01</span>
+<!-- Onderfooter -->
+<div class="container-wide onderfooter">
+  <div class="onderfooter-flex">
+    <div class="onderfooter-left">
+      <span>© 2025 luxechaletbouwen.nl</span>
+      <span>KVK: 82221367</span>
+      <span>BTW: NL862380108B01</span>
+      <span style="display: block; margin-top: 0.5rem;">
+        Initiatief van <a href="https://www.dehouttwist.nl/" target="_blank" rel="noopener">De Houttwist</a>
+      </span>
+    </div>
+    <div class="onderfooter-right">
+      <span>Website door <a href="https://niceonline.nl" target="_blank" rel="noopener">Nice Online</a></span>
     </div>
   </div>
+</div>
 </footer>
 
 <?php wp_footer(); ?>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<!-- andere code in je footer -->
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const hiddenField = document.querySelector('input[name="page-url"]');
+    if (hiddenField) {
+      hiddenField.value = window.location.href;
+    }
+  });
+</script>
+
+</body>
+</html>
+
 </body>
 </html>

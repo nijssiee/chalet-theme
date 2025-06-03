@@ -27,7 +27,7 @@ if (have_rows('kolommen_repeater')) : ?>
                             <h3 class="kolom-titel"><?php echo esc_html($titel); ?></h3>
                         <?php endif; ?>
                         <?php if (!empty($tekst)) : ?>
-                            <div class="kolom-tekst"><?php echo wp_kses_post($tekst); ?></div>
+<div class="kolom-tekst styled-lists"><?php echo wpautop(do_shortcode($tekst)); ?></div>
                         <?php endif; ?>
                     </div>
                 <?php endwhile; ?>

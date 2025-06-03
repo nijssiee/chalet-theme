@@ -44,9 +44,9 @@ $curve = get_sub_field('curve') ?: '';
             itemprop="acceptedAnswer"
             itemtype="https://schema.org/Answer"
           >
-            <div itemprop="text">
-              <?php the_content(); ?>
-            </div>
+<div itemprop="text" class="styled-lists">
+  <?php the_content(); ?>
+</div>
           </div>
         </div>
       <?php endforeach; wp_reset_postdata(); ?>

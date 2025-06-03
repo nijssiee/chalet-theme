@@ -20,7 +20,9 @@
                 "main--padding-both": "Boven en onder",
                 "main--padding-top": "Boven",
                 "main--padding-bottom": "Onder",
-                "main--padding-none": "Geen"
+                "main--padding-none": "Geen",
+                "main--padding-top-half": "Boven half",
+                "main--padding-bottom-half": "Onder half"
             },
             "default_value": "main--padding-both",
             "return_format": "value",
@@ -29,7 +31,9 @@
             "allow_in_bindings": 0,
             "ui": 0,
             "ajax": 0,
-            "placeholder": ""
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
         },
         {
             "key": "field_67b72f40dc663",
@@ -56,7 +60,9 @@
             "allow_in_bindings": 0,
             "ui": 0,
             "ajax": 0,
-            "placeholder": ""
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
         },
         {
             "key": "field_67b72f51dc664",
@@ -98,5 +104,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1740059468
+    "modified": 1748890130
 }
